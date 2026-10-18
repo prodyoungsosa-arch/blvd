@@ -1,0 +1,14 @@
+forward CreatePlayerCaja(playerid, id);
+public CreatePlayerCaja(playerid, id)
+{
+	InfoCaja[id][cjID] = cache_insert_id();
+	cache_unset_active();
+	InfoPersonaje[playerid][pManoDerecha] = 55;
+	InfoPersonaje[playerid][pManoDerechaCant] = InfoCaja[id][cjID];
+	PonerObjeto(playerid, 1, 55);
+	new query[256];
+	mysql_format(db_samp, query, sizeof query, "UPDATE personajes SET Mano_derecha = 55, Cantidad_mano_derecha = '%d' WHERE ID = '%d'", InfoPersonaje[playerid][pManoDerechaCant], InfoPersonaje[playerid][pID]);
+	mysql_tquery(db_samp, query);
+	totalcajas++;
+	return 1;
+}
