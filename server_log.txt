@@ -1,0 +1,504 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[19:58:35] 
+[19:58:35] Server Plugins
+[19:58:35] --------------
+[19:58:35]  Loading plugin: crashdetect
+[19:58:35]   CrashDetect plugin 4.19.4
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: sscanf
+[19:58:35] 
+
+[19:58:35]  ===============================
+
+[19:58:35]       sscanf plugin loaded.     
+
+[19:58:35]          Version:  2.8.3        
+
+[19:58:35]   (c) 2018 Alex "Y_Less" Cole  
+
+[19:58:35]  ===============================
+
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: streamer
+[19:58:35] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: pawncmd
+[19:58:35] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: mysql
+[19:58:35]  >> plugin.mysql: R41-4 successfully loaded.
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: YSF
+[19:58:35] 
+[19:58:35]  ==============================================
+[19:58:35]  YSF 2.2 (compiled Sep 19 2021 13:01:03) loaded
+[19:58:35]   (c) 2008 Alex "Y_Less" Cole
+[19:58:35]   (c) 2010 - 2018 kurta999
+[19:58:35]   (c) 2018 - 2020 IllidanS4
+[19:58:35]  Server version: 0.3.7 R2-1 or R2-2, Windows
+[19:58:35]  ==============================================
+[19:58:35] 
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: PawnPlus
+[19:58:35]  PawnPlus v1.4.3 loaded
+[19:58:35]  Created by IS4
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: pawnraknet
+[19:58:35] [Pawn.RakNet] 
+
+    | Pawn.RakNet 1.4.1 | 2016 - 2020
+    |--------------------------------
+    | Author and maintainer: urShadow
+
+
+    | Compiled: Jun 18 2020 at 14:19:11
+    |--------------------------------------------------------------
+    | Forum thread: https://forum.sa-mp.com/showthread.php?t=640306
+    |--------------------------------------------------------------
+    | Repository: https://github.com/urShadow/Pawn.RakNet
+    |--------------------------------------------------------------
+    | Wiki: https://github.com/urShadow/Pawn.RakNet/wiki
+
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: pawnregex
+[19:58:35] [Pawn.Regex] plugin v1.2.3 loading...
+[19:58:35] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[19:58:35]   Loaded.
+[19:58:35]  Loading plugin: ColAndreas
+[19:58:35] *********************
+[19:58:35] ** Created By:     **
+[19:58:35] ** [uL]Chris42O    **
+[19:58:35] ** [uL]Slice       **
+[19:58:35] ** [uL]Pottus      **
+[19:58:35] *********************
+[19:58:38] Loaded collision data.
+[19:58:38] *********************
+[19:58:38]   ColAndreas Loaded
+[19:58:38]    v1.4.0
+[19:58:38] *********************
+[19:58:38]   Loaded.
+[19:58:38]  Loaded 10 plugins.
+
+[19:58:38] 
+[19:58:38] Filterscripts
+[19:58:38] ---------------
+[19:58:38]   Loading filterscript '123.amx'...
+[19:58:38]   Loading filterscript 'android-check.amx'...
+[19:58:38] Android check has been successfully loaded.
+[19:58:38]   Loaded 2 filterscripts.
+
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[02:45:00] 
+[02:45:00] Server Plugins
+[02:45:00] --------------
+[02:45:00]  Loading plugin: crashdetect
+[02:45:00]   CrashDetect plugin 4.19.4
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: sscanf
+[02:45:00] 
+
+[02:45:00]  ===============================
+
+[02:45:00]       sscanf plugin loaded.     
+
+[02:45:00]          Version:  2.8.3        
+
+[02:45:00]   (c) 2018 Alex "Y_Less" Cole  
+
+[02:45:00]  ===============================
+
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: streamer
+[02:45:00] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: pawncmd
+[02:45:00] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: mysql
+[02:45:00]  >> plugin.mysql: R41-4 successfully loaded.
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: YSF
+[02:45:00] 
+[02:45:00]  ==============================================
+[02:45:00]  YSF 2.2 (compiled Sep 19 2021 13:01:03) loaded
+[02:45:00]   (c) 2008 Alex "Y_Less" Cole
+[02:45:00]   (c) 2010 - 2018 kurta999
+[02:45:00]   (c) 2018 - 2020 IllidanS4
+[02:45:00]  Server version: 0.3.7 R2-1 or R2-2, Windows
+[02:45:00]  ==============================================
+[02:45:00] 
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: PawnPlus
+[02:45:00]  PawnPlus v1.4.3 loaded
+[02:45:00]  Created by IS4
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: pawnraknet
+[02:45:00] [Pawn.RakNet] 
+
+    | Pawn.RakNet 1.4.1 | 2016 - 2020
+    |--------------------------------
+    | Author and maintainer: urShadow
+
+
+    | Compiled: Jun 18 2020 at 14:19:11
+    |--------------------------------------------------------------
+    | Forum thread: https://forum.sa-mp.com/showthread.php?t=640306
+    |--------------------------------------------------------------
+    | Repository: https://github.com/urShadow/Pawn.RakNet
+    |--------------------------------------------------------------
+    | Wiki: https://github.com/urShadow/Pawn.RakNet/wiki
+
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: pawnregex
+[02:45:00] [Pawn.Regex] plugin v1.2.3 loading...
+[02:45:00] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[02:45:00]   Loaded.
+[02:45:00]  Loading plugin: ColAndreas
+[02:45:00] *********************
+[02:45:00] ** Created By:     **
+[02:45:00] ** [uL]Chris42O    **
+[02:45:00] ** [uL]Slice       **
+[02:45:00] ** [uL]Pottus      **
+[02:45:00] *********************
+[02:45:03] Loaded collision data.
+[02:45:03] *********************
+[02:45:03]   ColAndreas Loaded
+[02:45:03]    v1.4.0
+[02:45:03] *********************
+[02:45:03]   Loaded.
+[02:45:03]  Loaded 10 plugins.
+
+[02:45:03] 
+[02:45:03] Filterscripts
+[02:45:03] ---------------
+[02:45:03]   Loading filterscript '123.amx'...
+[02:45:03]   Loading filterscript 'android-check.amx'...
+[02:45:03] Android check has been successfully loaded.
+[02:45:03]   Loaded 2 filterscripts.
+
+[02:45:04] ===================== Server Boot Sequence ====================
+[02:45:04]  
+[02:45:04] Servidor: Boulevard
+[02:45:04] Version: Alpha I
+[02:45:04] Lenguaje: Español | Spanish
+[02:45:04] Base de datos: conexión con la base de datos establecida.
+[02:45:04]  
+[02:45:04] ===============================================================
+[02:45:04] Loading Map.
+[02:45:04] Loaded Map.                             
+[02:45:04] Number of vehicle models: 0
+[02:45:52] [connection] 127.0.0.1:49378 requests connection cookie.
+[02:45:53] [connection] incoming connection: 127.0.0.1:49378 id: 0
+[02:45:54] [connection] incoming connection: 127.0.0.1:54666 id: 0
+[02:45:54] [join] FortyySevennn has joined the server (0:127.0.0.1)
+[02:46:16] [CMD] [] [Altyn]: /ls 
+[02:47:20] [CMD] [] [Altyn]: /vehiculos 
+[02:47:23] [CMD] [] [Altyn]: /darauto 
+[02:47:28] [CMD] [] [Altyn]: /darauto 0 522 0 0
+[02:48:00] [part] FMNY has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[03:49:51] 
+[03:49:51] Server Plugins
+[03:49:51] --------------
+[03:49:51]  Loading plugin: crashdetect
+[03:49:51]   CrashDetect plugin 4.19.4
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: sscanf
+[03:49:51] 
+
+[03:49:51]  ===============================
+
+[03:49:51]       sscanf plugin loaded.     
+
+[03:49:51]          Version:  2.8.3        
+
+[03:49:51]   (c) 2018 Alex "Y_Less" Cole  
+
+[03:49:51]  ===============================
+
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: streamer
+[03:49:51] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: pawncmd
+[03:49:51] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: mysql
+[03:49:51]  >> plugin.mysql: R41-4 successfully loaded.
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: YSF
+[03:49:51] 
+[03:49:51]  ==============================================
+[03:49:51]  YSF 2.2 (compiled Sep 19 2021 13:01:03) loaded
+[03:49:51]   (c) 2008 Alex "Y_Less" Cole
+[03:49:51]   (c) 2010 - 2018 kurta999
+[03:49:51]   (c) 2018 - 2020 IllidanS4
+[03:49:51]  Server version: 0.3.7 R2-1 or R2-2, Windows
+[03:49:51]  ==============================================
+[03:49:51] 
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: PawnPlus
+[03:49:51]  PawnPlus v1.4.3 loaded
+[03:49:51]  Created by IS4
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: pawnraknet
+[03:49:51] [Pawn.RakNet] 
+
+    | Pawn.RakNet 1.4.1 | 2016 - 2020
+    |--------------------------------
+    | Author and maintainer: urShadow
+
+
+    | Compiled: Jun 18 2020 at 14:19:11
+    |--------------------------------------------------------------
+    | Forum thread: https://forum.sa-mp.com/showthread.php?t=640306
+    |--------------------------------------------------------------
+    | Repository: https://github.com/urShadow/Pawn.RakNet
+    |--------------------------------------------------------------
+    | Wiki: https://github.com/urShadow/Pawn.RakNet/wiki
+
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: pawnregex
+[03:49:51] [Pawn.Regex] plugin v1.2.3 loading...
+[03:49:51] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[03:49:51]   Loaded.
+[03:49:51]  Loading plugin: ColAndreas
+[03:49:51] *********************
+[03:49:51] ** Created By:     **
+[03:49:51] ** [uL]Chris42O    **
+[03:49:51] ** [uL]Slice       **
+[03:49:51] ** [uL]Pottus      **
+[03:49:51] *********************
+[03:49:54] Loaded collision data.
+[03:49:54] *********************
+[03:49:54]   ColAndreas Loaded
+[03:49:54]    v1.4.0
+[03:49:54] *********************
+[03:49:54]   Loaded.
+[03:49:54]  Loaded 10 plugins.
+
+[03:49:54] 
+[03:49:54] Filterscripts
+[03:49:54] ---------------
+[03:49:54]   Loading filterscript '123.amx'...
+[03:49:54]   Loading filterscript 'android-check.amx'...
+[03:49:54] Android check has been successfully loaded.
+[03:49:54]   Loaded 2 filterscripts.
+
+[03:49:55] ===================== Server Boot Sequence ====================
+[03:49:55]  
+[03:49:55] Servidor: Boulevard
+[03:49:55] Version: Alpha I
+[03:49:55] Lenguaje: Español | Spanish
+[03:49:55] Base de datos: conexión con la base de datos establecida.
+[03:49:55]  
+[03:49:55] ===============================================================
+[03:49:55] Loading Map.
+[03:49:55] Loaded Map.                             
+[03:49:55] Number of vehicle models: 0
+[03:50:08] [connection] 127.0.0.1:56802 requests connection cookie.
+[03:50:09] [connection] incoming connection: 127.0.0.1:56802 id: 0
+[03:50:25] [connection] incoming connection: 127.0.0.1:58357 id: 0
+[03:50:52] [connection] 127.0.0.1:58831 requests connection cookie.
+[03:50:53] [connection] incoming connection: 127.0.0.1:58831 id: 0
+[03:50:53] [connection] incoming connection: 127.0.0.1:51043 id: 0
+[03:50:53] [join] FortyySevennn has joined the server (0:127.0.0.1)
+[03:51:47] [CMD] [] [Altyn]: /darauto 0 522 0 0
+[03:52:12] [CMD] [] [Altyn]: /crearnegocio 
+[03:52:18] [CMD] [] [Altyn]: /crearnegocio 20 1
+[03:52:23] [CMD] [] [Altyn]: /setweather 
+[03:52:25] [CMD] [] [Altyn]: /setweather 0
+[03:52:27] [CMD] [] [Altyn]: /comprar 
+[03:52:43] [CMD] [] [Altyn]: /irnegocio 1
+[03:52:45] [CMD] [] [Altyn]: /irnegocio 1
+[03:52:47] [CMD] [] [Altyn]: /revivir 
+[03:52:49] [CMD] [] [Altyn]: /revivir fmny
+[03:53:55] [CMD] [] [Altyn]: /revivir 
+[03:53:57] [CMD] [] [Altyn]: /revivir 0
+[03:54:00] [CMD] [] [Altyn]: /revivir fmny
+[03:59:25] [part] FMNY has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[08:58:31] 
+[08:58:31] Server Plugins
+[08:58:31] --------------
+[08:58:31]  Loading plugin: crashdetect
+[08:58:31]   CrashDetect plugin 4.19.4
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: sscanf
+[08:58:31] 
+
+[08:58:31]  ===============================
+
+[08:58:31]       sscanf plugin loaded.     
+
+[08:58:31]          Version:  2.8.3        
+
+[08:58:31]   (c) 2018 Alex "Y_Less" Cole  
+
+[08:58:31]  ===============================
+
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: streamer
+[08:58:31] 
+
+*** Streamer Plugin v2.9.6 by Incognito loaded ***
+
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: pawncmd
+[08:58:31] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: mysql
+[08:58:31]  >> plugin.mysql: R41-4 successfully loaded.
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: YSF
+[08:58:31] 
+[08:58:31]  ==============================================
+[08:58:31]  YSF 2.2 (compiled Sep 19 2021 13:01:03) loaded
+[08:58:31]   (c) 2008 Alex "Y_Less" Cole
+[08:58:31]   (c) 2010 - 2018 kurta999
+[08:58:31]   (c) 2018 - 2020 IllidanS4
+[08:58:31]  Server version: 0.3.7 R2-1 or R2-2, Windows
+[08:58:31]  ==============================================
+[08:58:31] 
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: PawnPlus
+[08:58:31]  PawnPlus v1.4.3 loaded
+[08:58:31]  Created by IS4
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: pawnraknet
+[08:58:31] [Pawn.RakNet] 
+
+    | Pawn.RakNet 1.4.1 | 2016 - 2020
+    |--------------------------------
+    | Author and maintainer: urShadow
+
+
+    | Compiled: Jun 18 2020 at 14:19:11
+    |--------------------------------------------------------------
+    | Forum thread: https://forum.sa-mp.com/showthread.php?t=640306
+    |--------------------------------------------------------------
+    | Repository: https://github.com/urShadow/Pawn.RakNet
+    |--------------------------------------------------------------
+    | Wiki: https://github.com/urShadow/Pawn.RakNet/wiki
+
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: pawnregex
+[08:58:31] [Pawn.Regex] plugin v1.2.3 loading...
+[08:58:31] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[08:58:31]   Loaded.
+[08:58:31]  Loading plugin: ColAndreas
+[08:58:31] *********************
+[08:58:31] ** Created By:     **
+[08:58:31] ** [uL]Chris42O    **
+[08:58:31] ** [uL]Slice       **
+[08:58:31] ** [uL]Pottus      **
+[08:58:31] *********************
+[08:58:34] Loaded collision data.
+[08:58:34] *********************
+[08:58:34]   ColAndreas Loaded
+[08:58:34]    v1.4.0
+[08:58:34] *********************
+[08:58:34]   Loaded.
+[08:58:34]  Loaded 10 plugins.
+
+[08:58:34] 
+[08:58:34] Filterscripts
+[08:58:34] ---------------
+[08:58:34]   Loading filterscript '123.amx'...
+[08:58:34]   Loading filterscript 'android-check.amx'...
+[08:58:34] Android check has been successfully loaded.
+[08:58:34]   Loaded 2 filterscripts.
+
+[08:58:35] ===================== Server Boot Sequence ====================
+[08:58:35]  
+[08:58:35] Servidor: Boulevard
+[08:58:35] Version: Alpha I
+[08:58:35] Lenguaje: Español | Spanish
+[08:58:35] Base de datos: conexión con la base de datos establecida.
+[08:58:35]  
+[08:58:35] ===============================================================
+[08:58:35] Loading Map.
+[08:58:35] Loaded Map.                             
+[08:58:35] Number of vehicle models: 0
+[11:10:10] Contenedores: Se limpiaron 0 contenedores.
