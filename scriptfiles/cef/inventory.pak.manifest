@@ -1,0 +1,15 @@
+{
+    "files": {
+        "index.html": {
+            "encrypted": true,
+            "modified": 13436828893,
+            "size": 13770
+        }
+    },
+    "pak": {
+        "hash": "b55185019b554e6670db77f26aeed1ceb492886d85acdb3972efa60692118ae7",
+        "path": "inventory.pak",
+        "size": 13932
+    },
+    "version": 2
+}
