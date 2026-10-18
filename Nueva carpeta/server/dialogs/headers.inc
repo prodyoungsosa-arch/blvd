@@ -1,1 +1,0 @@
-#define DIALOG_TEST 1
