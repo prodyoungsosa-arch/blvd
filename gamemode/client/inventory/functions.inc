@@ -10,17 +10,17 @@ PonerObjeto(playerid, lugar, objetoid)
 				case 1..40: SetPlayerAttachedObject(playerid, 7, modelo, 6); //weapons
 				case 41: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.059000, 0.041000, 0.012999, 0.199999, -21.399997, 0.099999, 0.389000, 0.939000, 0.409999); //encendedor
 				case 42: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.057000, 0.035999, 0.003999, -105.099983, -2.200000, -171.699981, 1.000000, 1.000000, 1.000000); //paquete de cigarros
-				case 43..46: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.073000, 0.073000, 0.015999, -9.699999, 0.600041, -0.299999, 1.000000, 1.000000, 1.000000); //marihuana, crack, metanfetamina, cocaína
+				case 43..46: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.073000, 0.073000, 0.015999, -9.699999, 0.600041, -0.299999, 1.000000, 1.000000, 1.000000); //marihuana, crack, metanfetamina, coca?�na
 				case 47: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.098000, 0.034000, 0.037999, 111.599998, 19.299999, 8.299999, 1.000000, 1.000000, 1.000000); //canuto de marihuana
 				case 48: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.045999, 0.111999, 0.032000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //blunt de marihuana
 				case 49: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.121999, -0.004000, 0.004999, 9.599995, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //cigarro
-				case 50: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.093999, 0.012000, -0.010999, -81.199974, 10.000000, 179.099945, 0.990999, 0.829000, 0.903000); //teléfono s10
+				case 50: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.093999, 0.012000, -0.010999, -81.199974, 10.000000, 179.099945, 0.990999, 0.829000, 0.903000); //tel?�fono s10
 				case 51: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.388999, 0.034000, 0.101999, 0.000000, -100.599998, 0.399999, 1.000000, 1.000000, 1.000000); //boombox
 				case 52: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.048000, -0.001999, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //dinamita
 				case 53: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.178000, 0.019999, 0.031998, 0.000000, -101.600021, 0.000000, 0.630999, 0.452998, 0.611998); //botiquin
 				case 54: SetPlayerAttachedObject(playerid, 7, modelo, 6); //escopetita
 				case 55: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.152999, 0.106998, 0.034999, -85.699996, 179.999969, 78.399993, 1.038999, 0.752000, 0.854999); //caja especial
-				case 56..60: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.083999, 0.039000, -0.003999, 0.799998, -5.099998, -92.599990, 1.000000, 1.000000, 1.000000); //cargador pequeño
+				case 56..60: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.083999, 0.039000, -0.003999, 0.799998, -5.099998, -92.599990, 1.000000, 1.000000, 1.000000); //cargador peque?�o
 				case 61..64: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.064999, 0.035998, 0.018999, 1.599980, -105.499984, 1.800009, 0.649999, 0.910999, 0.476999); //cargador grande
 				case 65: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.042000, 0.055999, -0.085000, 10.800001, 1.100013, 0.000000, 1.000000, 1.000000, 1.000000); //cerveza
 				case 66: SetPlayerAttachedObject(playerid, 7, modelo, 6); //chaleco
@@ -30,7 +30,7 @@ PonerObjeto(playerid, lugar, objetoid)
 				
 				//Pescado
 				case 87..91: SetPlayerAttachedObject(playerid, 7, modelo, 6, 0.069998, 0.057998, -0.008000, 0.000000, 0.000000, 0.000000, 1.116000, 1.000000, 1.254999);
-				//Ca�a
+				//Ca?a
 				case 92: SetPlayerAttachedObject(playerid, 7, modelo, 5, 0.049000, 0.042999, -0.027000, 17.399976, -34.500000, 175.000015, 1.000000, 1.000000, 1.000000);
 			}
 		}
@@ -52,7 +52,7 @@ PonerObjeto(playerid, lugar, objetoid)
 				case 12: SetPlayerAttachedObject(playerid, 8, modelo, 5, -0.002000, 0.074000, 0.001000, 151.200042, 23.000000, -9.100001, 1.000000, 1.000000, 1.000000); //consolador 3
 				case 13: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.017999, 0.003999, -0.047999, 168.200012, 18.300003, -27.900005, 1.000000, 1.000000, 1.000000); //consolador 4
 				case 14: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.176000, 0.000000, -0.011000, -23.399999, 160.599990, -6.399995, 1.000000, 1.000000, 1.000000); //flores
-				case 15: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.008999, -0.018999, -0.047999, -33.199996, 159.900085, 156.399902, 1.000000, 1.000000, 1.000000); //bastón
+				case 15: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.008999, -0.018999, -0.047999, -33.199996, 159.900085, 156.399902, 1.000000, 1.000000, 1.000000); //bast??n
 				case 16: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.019000, 0.047000, -0.021000, 164.499984, 0.000000, -17.599994, 1.000000, 1.000000, 1.000000); //granada
 				case 17: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.034000, 0.063000, -0.037999, 164.500000, 14.599996, -4.700009, 1.000000, 1.000000, 1.000000); //granada de gas
 				case 18: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.022999, 0.039000, -0.125999, 165.700012, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //molotov
@@ -75,32 +75,32 @@ PonerObjeto(playerid, lugar, objetoid)
 				case 35: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.023000, 0.048999, -0.013000, 172.200012, 14.400005, 0.599999, 1.000000, 1.000000, 1.000000); //minigun
 				case 36: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.036999, 0.026999, -0.079999, 152.899993, 14.900004, -0.400000, 1.000000, 1.000000, 1.000000); //spray
 				case 37: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.004000, 0.061999, -0.063999, 126.599990, 33.099998, 2.200000, 1.000000, 1.000000, 1.000000); //extintor
-				case 38: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.018000, 0.062999, 0.074999, -109.400039, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //cámara fotográfica
+				case 38: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.018000, 0.062999, 0.074999, -109.400039, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //c??mara fotogr??fica
 				case 39: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.018000, 0.062999, 0.074999, -109.400039, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //paracaidas
-				case 40: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.050999, 0.038000, -0.021999, 144.500015, 9.100000, -11.600002, 1.000000, 1.000000, 1.000000); //táser
+				case 40: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.050999, 0.038000, -0.021999, 144.500015, 9.100000, -11.600002, 1.000000, 1.000000, 1.000000); //t??ser
 				case 41: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.084000, 0.026000, -0.014000, 156.000076, -21.299989, -1.399998, 0.389000, 0.939000, 0.409999); //encendedor
 				case 42: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.086000, 0.043999, -0.010000, -89.599967, -2.199996, 1.099998, 1.000000, 1.000000, 1.000000); //paquete de cigarros
-				case 43..46: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.094000, 0.065000, -0.026000, 0.000000, -177.499969, 0.000000, 1.000000, 1.000000, 1.000000); //marihuana,crack, metanfetamina, cocaína
+				case 43..46: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.094000, 0.065000, -0.026000, 0.000000, -177.499969, 0.000000, 1.000000, 1.000000, 1.000000); //marihuana,crack, metanfetamina, coca?�na
 				case 47: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.116999, 0.034000, -0.037000, 111.599998, 19.299999, 8.299999, 1.000000, 1.000000, 1.000000); //canuto de marihuana
 				case 48: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.036000, 0.074000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //blunt de marihuana
 				case 49: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.130000, 0.013999, 0.007999, 9.599995, 6.699999, 29.500005, 1.000000, 1.000000, 1.000000); //cigarro
-				case 50: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.056000, 0.000000, 0.007000, -97.100006, 0.000000, 0.000000, 0.990999, 0.829000, 0.903000); //teléfono s10
+				case 50: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.056000, 0.000000, 0.007000, -97.100006, 0.000000, 0.000000, 0.990999, 0.829000, 0.903000); //tel?�fono s10
 				case 51: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.423000, 0.000000, 0.019999, 6.100001, -101.499984, 36.800006, 1.000000, 1.000000, 1.000000); //boombox
 				case 52: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.050999, 0.072000, 0.000000, -34.699996, -21.000000, 1.699999, 1.000000, 1.000000, 1.000000); //dinamita
 				case 53: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.193000, 0.029000, -0.001001, 0.000000, -101.600021, 12.900000, 0.630999, 0.452998, 0.611998); //botiquin
 				case 54: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.000000, 0.089000, 0.000000, 153.500015, 10.000001, 4.800000, 1.000000, 1.000000, 1.000000); //escopetita
 				case 55: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.171999, 0.079999, -0.111999, -124.399993, 166.300018, -93.599990, 1.038999, 0.752000, 0.854999); //caja especial
-				case 56..60: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.088999, 0.023000, 0.006000, -9.600001, 178.099945, 92.899978, 1.000000, 1.000000, 1.000000); //cargador pequeño
+				case 56..60: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.088999, 0.023000, 0.006000, -9.600001, 178.099945, 92.899978, 1.000000, 1.000000, 1.000000); //cargador peque?�o
 				case 61..64: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.092000, 0.038000, -0.026000, -37.200008, 82.199996, 3.499996, 0.649999, 0.910999, 0.476999); //cargador grande
 				case 65: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.092000, 0.114000, 0.069000, -37.200008, -173.000015, 3.499995, 1.000000, 1.000000, 1.000000); //cerveza
 				case 66: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.023000, 0.048999, -0.013000, 172.200012, 14.400005, 0.599999, 1.000000, 1.000000, 1.000000); //chaleco
 				case 67: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.366999, 0.000000, 0.000000, -171.600021, -88.899925, -166.500076, 0.898000, 0.936000, 1.000000); //sixpack de cerveza
-				case 68..83: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.094000, 0.065000, -0.026000, 0.000000, -177.499969, 0.000000, 1.000000, 1.000000, 1.000000); //marihuana,crack, metanfetamina, cocaína
+				case 68..83: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.094000, 0.065000, -0.026000, 0.000000, -177.499969, 0.000000, 1.000000, 1.000000, 1.000000); //marihuana,crack, metanfetamina, coca?�na
 				case 86: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.562000, 0.197997, 0.003997, 2.899996, 176.400024, -19.299999, 1.000000, 1.000000); //mochila
 				
 				//pescados
 				case 87..91: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.024999, 0.000000, -0.005999, 0.000000, 0.000000, 0.000000, 1.000000, 1.000000, 1.000000); //nudillera
-                //ca�a
+                //ca?a
 				case 92: SetPlayerAttachedObject(playerid, 8, modelo, 5, 0.023999, 0.052999, -0.041999, 157.899978, 2.499999, 0.000000, 1.000000, 1.000000, 1.000000);
 			}
 		}
@@ -148,7 +148,7 @@ PonerObjeto(playerid, lugar, objetoid)
 				InfoPersonaje[playerid][ptHueso][toy] = 1;
 				EditAttachedObject(playerid, 9);
 				EditandoObjetoJ[playerid] = 2;
-				SendPlayerChatMessage(playerid, -1, "Manten presionado {3E62F4}~k~~PED_SPRINT~{FFFFFF} para cambiar la posición de la cámara.");
+				SendPlayerChatMessage(playerid, -1, "Manten presionado {3E62F4}~k~~PED_SPRINT~{FFFFFF} para cambiar la posici??n de la c??mara.");
 			}
 
 		}
@@ -181,7 +181,7 @@ funcion tirar_objeto(ObjetoID, Cantidad, Float: X, Float: Y, Float: Z, world, in
 					case 9: { rotx = 95; roty = -69; rotz = 8; Z += 0.08; } //motosierra
 					case 10..13: { rotx = 90; roty = 1; rotz =  8; Z+= 0; } //consoladores
 					case 14: { rotx = 70; roty = 1; rotz =  8; Z+= 0; } //flores
-					case 15: { rotx = 87; roty = 1; rotz =  8; Z+= 0; } //bastón
+					case 15: { rotx = 87; roty = 1; rotz =  8; Z+= 0; } //bast??n
 					case 16: { rotx = 0; roty = -17; rotz = 0; Z += 0.05; } //granada
 					case 17: { rotx = 0; roty = 0.3; rotz = -7; Z += 0.06; } //granada de humo
 					case 18: { rotx = -5.5; roty = -1.8; rotz = -7; Z += 0.2; } //molotov
@@ -205,11 +205,11 @@ funcion tirar_objeto(ObjetoID, Cantidad, Float: X, Float: Y, Float: Z, world, in
 					case 40: { rotx = -85; roty = 3; rotz = 3; Z += 0.05; } //taser
 					case 41: { rotx = 0; roty = 0; rotz = 0; Z += 0.1; } //encendedor
 					case 42: { rotx = 0; roty = 0; rotz = 0; Z += 0.02; } //paquete de cigarros
-					case 43..46: { rotx = 0; roty = 0; rotz = 0; Z += 0.12; } //marihuana, crack, metanfetamina, cocaína
+					case 43..46: { rotx = 0; roty = 0; rotz = 0; Z += 0.12; } //marihuana, crack, metanfetamina, coca?�na
 					case 47: { rotx = 0; roty = -90; rotz = 0; Z += 0.02; } //canuto de marihuana
 					case 48: { rotx = 0; roty = 0; rotz = 90; Z += 0.05; } //blunt de marihuana
 					case 49: { rotx = 0; roty = 0; rotz = 0; Z += 0.02; } //cigarro
-					case 50: { rotx = 0; roty = 0; rotz = 0; Z += 0.02; } //teléfono s10
+					case 50: { rotx = 0; roty = 0; rotz = 0; Z += 0.02; } //tel?�fono s10
 					case 51: { rotx = 0; roty = 0; rotz = 0; Z += 0; } //boombox
 					case 52: { rotx = 0; roty = 0; rotz = 0; Z += 0.2; } //dinamita
 					case 53: { rotx = 0; roty = 0; rotz = 0; Z += 0.06; } //botiquin
@@ -268,273 +268,187 @@ funcion SueloTime(i)
 	return 1;
 }
 
+// ==========================================
+// NUEVO SISTEMA DE INVENTARIO CEF
+// ==========================================
+
+new bool:QuiereAbrirInv[MAX_PLAYERS];
+
+CrearNavegadorInventario(playerid)
+{
+    CEF_CreateBrowser(playerid, CEF_INV_ID, "http://cef/inventory/index.html", .focused = true);
+    CEF_FocusBrowser(playerid, CEF_INV_ID, true);
+    SelectTextDraw(playerid, 0xFFFFFF00);
+    SetTimerEx("EnviarDatosInventario", 500, false, "i", playerid);
+}
+
 SetPlayerInventario(playerid, type)
 {
-	if (InfoCuenta[playerid][jEstiloBolsillos] != 0) return 1;
-	new gformat[170];
-	//type: 1 (mostrar) 2 (remover) 3 (actualizar)
-	switch (type)
-	{
-		case 1: //mostrar
-		{
-			if(IsPlayerFishing[playerid] == true) return 1;
-			if (Act_Inventario[playerid] != 0) return 1;
-			if (InfoPersonaje[playerid][pTogVelocimetro] != 0 && GetPlayerVehicleID(playerid) != 0)
-			{
-				hide_velocimetro(playerid);
-			}
-			SetPlayerAnuncio(playerid, 2);
-			
-			//indice
-			TextDrawShowForPlayer(playerid, INV_base);
-			TextDrawShowForPlayer(playerid, INV_2base);
-			
-			//nombre
-			format(gformat, sizeof gformat, "%s", InfoPersonaje[playerid][pNombre_Apellido]);
-			PlayerTextDrawSetStringEx(playerid, INV_nombre[playerid], gformat);
-			PlayerTextDrawShow(playerid, INV_nombre[playerid]);
-			
-			//skin
-			PlayerTextDrawSetPreviewModel(playerid, INV_skin[playerid], InfoPersonaje[playerid][pSkin]);
-			PlayerTextDrawShow(playerid, INV_skin[playerid]);
-			
-			//slots de inventario
-			new old1 = 0, old2 = 1;
-			Loop(id, 9, 0)
-			{
-				new obj = InfoPersonaje[playerid][pBolsillo][id], cantidad = InfoPersonaje[playerid][pBolsilloCant][id]; //esto es el número cantidad
-				if (InfoPersonaje[playerid][pBolsillo][id] != 0) // ocupada
-				{
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][old1], 125);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][old1], InfoInventario[obj][ModeloObjeto]);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][old1], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-					//unidades
-					format(gformat, sizeof gformat, "%d", cantidad);
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][old2], gformat);
-				}
-				else // vacía
-				{
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][old1], 1296911741);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][old1], 346);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][old1], 0.0, 0.0, 0.0, 0.0);
-					//unidades
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][old2], "vacío");
-				}
-				PlayerTextDrawShow(playerid, INV_obj[playerid][old1]);
-				PlayerTextDrawShow(playerid, INV_obj[playerid][old2]);
-				old1 += 2;
-				old2 += 2;
-			}
-			//mano izquierda
-			if (InfoPersonaje[playerid][pManoIzquierda] != 0) // ocupada
-			{
-				new obj = InfoPersonaje[playerid][pManoIzquierda];
-				new cantidad = InfoPersonaje[playerid][pManoIzquierdaCant];
-				//modelo
-				PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][18], 125);
-				PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][18], InfoInventario[obj][ModeloObjeto]);
-				PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][18], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-				//unidades
-				format(gformat, sizeof gformat, "%d", cantidad);
-				PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][19], gformat);
-			}
-			else // vacía
-			{
-				//modelo
-				PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][18], 1296911741);
-				PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][18], 346);
-				PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][18], 0.0, 0.0, 0.0, 0.0);
-				//unidades
-				PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][19], "vacío");
-			}
-			PlayerTextDrawShow(playerid, INV_obj[playerid][18]);
-			PlayerTextDrawShow(playerid, INV_obj[playerid][19]);
-			//espalda
-			if (InfoPersonaje[playerid][pEspalda] != 0) // ocupada
-			{
-				new obj = InfoPersonaje[playerid][pEspalda];
-				new cantidad = InfoPersonaje[playerid][pEspaldaCant];
-				//modelo
-				PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][20], 125);
-				PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][20], InfoInventario[obj][ModeloObjeto]);
-				PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][20], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-				//unidades
-				format(gformat, sizeof gformat, "%d", cantidad);
-				PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][21], gformat);
-			}
-			else // vacía
-			{
-				//modelo
-				PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][20], 1296911741);
-				PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][20], 346);
-				PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][20], 0.0, 0.0, 0.0, 0.0);
-				//unidades
-				PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][21], "vacío");
-			}
-			PlayerTextDrawShow(playerid, INV_obj[playerid][20]);
-			PlayerTextDrawShow(playerid, INV_obj[playerid][21]);
-			//mano derecha
-			if (InfoPersonaje[playerid][pManoDerecha] != 0) // ocupada
-			{
-				new obj = InfoPersonaje[playerid][pManoDerecha];
-				new cantidad = InfoPersonaje[playerid][pManoDerechaCant];
-				//modelo
-				PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][22], 125);
-				PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][22], InfoInventario[obj][ModeloObjeto]);
-				PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][22], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-				//unidades
-				format(gformat, sizeof gformat, "%d", cantidad);
-				PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][23], gformat);
-			}
-			else // vacía
-			{
-				//modelo
-				PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][22], 1296911741);
-				PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][22], 346);
-				PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][22], 0.0, 0.0, 0.0, 0.0);
-				//unidades
-				PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][23], "vacío");
-			}
-			PlayerTextDrawShow(playerid, INV_obj[playerid][22]);
-			PlayerTextDrawShow(playerid, INV_obj[playerid][23]);
-			TextDrawShowForPlayer(playerid, INV_info);
-			TextDrawShowForPlayer(playerid, INV_2info);
-			TextDrawShowForPlayer(playerid, INV_IeD);
-			TextDrawShowForPlayer(playerid, INV_exit);
-			SelectTextDraw(playerid, 0xd63417BB);
-			Act_Inventario[playerid] = 1;
-		}
-		case 2: //remover
-		{
-			if (Act_Inventario[playerid] != 1) return 1;
-			TextDrawHideForPlayer(playerid, INV_base);
-			TextDrawHideForPlayer(playerid, INV_2base);
-			TextDrawHideForPlayer(playerid, INV_info);
-			TextDrawHideForPlayer(playerid, INV_2info);
-			TextDrawHideForPlayer(playerid, INV_IeD);
-			TextDrawHideForPlayer(playerid, INV_exit);
-			PlayerTextDrawHide(playerid, INV_nombre[playerid]);
-			Loop(x, 24, 0) { PlayerTextDrawHide(playerid, INV_obj[playerid][x]); }
-			PlayerTextDrawHide(playerid, INV_skin[playerid]);
-			Act_Inventario[playerid] = 0;
-			if (InfoPersonaje[playerid][pTogVelocimetro] != 0 && GetPlayerVehicleID(playerid) != 0)
-			{
-				mostrar_velocimetro(playerid, GetPlayerVehicleID(playerid));
-			}
-			SetPlayerAnuncio(playerid, 1);
-		}
-		case 3: //actualizar
-		{
-			if (Act_Inventario[playerid] != 0)
-			{
-				Loop(x, 24, 0) { PlayerTextDrawHide(playerid, INV_obj[playerid][x]); }
-				//slots de inventario
-				new old1 = 0, old2 = 1;
-				Loop(id, 9, 0)
-				{
-					new obj = InfoPersonaje[playerid][pBolsillo][id], cantidad = InfoPersonaje[playerid][pBolsilloCant][id]; //esto es el número cantidad
-					if (InfoPersonaje[playerid][pBolsillo][id] != 0) // ocupada
-					{
-						//modelo
-						PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][old1], 125);
-						PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][old1], InfoInventario[obj][ModeloObjeto]);
-						PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][old1], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-						//unidades
-						format(gformat, sizeof gformat, "%d", cantidad);
-						PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][old2], gformat);
-					}
-					else // vacía
-					{
-						//modelo
-						PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][old1], 1296911741);
-						PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][old1], 346);
-						PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][old1], 0.0, 0.0, 0.0, 0.0);
-						//unidades
-						PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][old2], "vacío");
-					}
-					PlayerTextDrawShow(playerid, INV_obj[playerid][old1]);
-					PlayerTextDrawShow(playerid, INV_obj[playerid][old2]);
-					old1 += 2;
-					old2 += 2;
-				}
-				//mano izquierda
-				if (InfoPersonaje[playerid][pManoIzquierda] != 0) // ocupada
-				{
-					new obj = InfoPersonaje[playerid][pManoIzquierda];
-					new cantidad = InfoPersonaje[playerid][pManoIzquierdaCant];
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][18], 125);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][18], InfoInventario[obj][ModeloObjeto]);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][18], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-					//unidades
-					format(gformat, sizeof gformat, "%d", cantidad);
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][19], gformat);
-				}
-				else // vacía
-				{
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][18], 1296911741);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][18], 346);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][18], 0.0, 0.0, 0.0, 0.0);
-					//unidades
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][19], "vacío");
-				}
-				PlayerTextDrawShow(playerid, INV_obj[playerid][18]);
-				PlayerTextDrawShow(playerid, INV_obj[playerid][19]);
-				//espalda
-				if (InfoPersonaje[playerid][pEspalda] != 0) // ocupada
-				{
-					new obj = InfoPersonaje[playerid][pEspalda];
-					new cantidad = InfoPersonaje[playerid][pEspaldaCant];
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][20], 125);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][20], InfoInventario[obj][ModeloObjeto]);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][20], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-					//unidades
-					format(gformat, sizeof gformat, "%d", cantidad);
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][21], gformat);
-				}
-				else // vacía
-				{
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][20], 1296911741);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][20], 346);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][20], 0.0, 0.0, 0.0, 0.0);
-					//unidades
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][21], "vacío");
-				}
-				PlayerTextDrawShow(playerid, INV_obj[playerid][20]);
-				PlayerTextDrawShow(playerid, INV_obj[playerid][21]);
-				//mano derecha
-				if (InfoPersonaje[playerid][pManoDerecha] != 0) // ocupada
-				{
-					new obj = InfoPersonaje[playerid][pManoDerecha];
-					new cantidad = InfoPersonaje[playerid][pManoDerechaCant];
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][22], 125);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][22], InfoInventario[obj][ModeloObjeto]);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][22], InfoInventario[obj][invRotX], InfoInventario[obj][invRotY], InfoInventario[obj][invRotZ], InfoInventario[obj][invZoom]);
-					//unidades
-					format(gformat, sizeof gformat, "%d", cantidad);
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][23], gformat);
-				}
-				else // vacía
-				{
-					//modelo
-					PlayerTextDrawBackgroundColor(playerid, INV_obj[playerid][22], 1296911741);
-					PlayerTextDrawSetPreviewModel(playerid, INV_obj[playerid][22], 346);
-					PlayerTextDrawSetPreviewRot(playerid, INV_obj[playerid][22], 0.0, 0.0, 0.0, 0.0);
-					//unidades
-					PlayerTextDrawSetStringEx(playerid, INV_obj[playerid][23], "vacío");
-				}
-				PlayerTextDrawShow(playerid, INV_obj[playerid][22]);
-				PlayerTextDrawShow(playerid, INV_obj[playerid][23]);
-			}
-		}
-	}
-	return 1;
+    if (InfoCuenta[playerid][jEstiloBolsillos] != 0) return 1;
+    
+    switch (type)
+    {
+        case 1: // Mostrar
+        {
+            if (CEF_PlayerHasPlugin(playerid))
+            {
+                CrearNavegadorInventario(playerid);
+            }
+            else
+            {
+                QuiereAbrirInv[playerid] = true;
+                SendClientMessage(playerid, -1, "Cargando interfaz...");
+            }
+            Act_Inventario[playerid] = 1;
+        }
+        case 2: // Cerrar
+        {
+            CEF_FocusBrowser(playerid, CEF_INV_ID, false);
+            CEF_DestroyBrowser(playerid, CEF_INV_ID);
+            CancelSelectTextDraw(playerid);
+            Act_Inventario[playerid] = 0;
+        }
+    }
+    return 1;
+}
+
+forward EnviarDatosInventario(playerid);
+public EnviarDatosInventario(playerid)
+{
+    new json[2048];
+    new itemJson[128];
+    
+    // NOTA: Si no tienes InfoPersonaje[playerid][pPeso], cambia el 15 por tu variable o d�jalo as�.
+    format(json, sizeof(json), "{\"weight\":%d,\"inventory\":[", 15); 
+
+    for (new i = 0; i < 9; i++)
+    {
+        if (InfoPersonaje[playerid][pBolsillo][i] != 0) {
+            format(itemJson, sizeof(itemJson), "{\"id\":%d,\"qty\":%d}", InfoPersonaje[playerid][pBolsillo][i], InfoPersonaje[playerid][pBolsilloCant][i]);
+        } else {
+            format(itemJson, sizeof(itemJson), "null");
+        }
+        strcat(json, itemJson);
+        strcat(json, ",");
+    }
+    
+    if (InfoPersonaje[playerid][pManoDerecha] != 0) {
+        format(itemJson, sizeof(itemJson), "{\"id\":%d,\"qty\":%d}", InfoPersonaje[playerid][pManoDerecha], InfoPersonaje[playerid][pManoDerechaCant]);
+    } else { format(itemJson, sizeof(itemJson), "null"); }
+    strcat(json, itemJson); strcat(json, ",");
+    
+    if (InfoPersonaje[playerid][pManoIzquierda] != 0) {
+        format(itemJson, sizeof(itemJson), "{\"id\":%d,\"qty\":%d}", InfoPersonaje[playerid][pManoIzquierda], InfoPersonaje[playerid][pManoIzquierdaCant]);
+    } else { format(itemJson, sizeof(itemJson), "null"); }
+    strcat(json, itemJson); strcat(json, ",");
+    
+    if (InfoPersonaje[playerid][pEspalda] != 0) {
+        format(itemJson, sizeof(itemJson), "{\"id\":%d,\"qty\":%d}", InfoPersonaje[playerid][pEspalda], InfoPersonaje[playerid][pEspaldaCant]);
+    } else { format(itemJson, sizeof(itemJson), "null"); }
+    strcat(json, itemJson);
+    
+    strcat(json, "]}");
+
+    CEF_EmitEvent(playerid, CEF_INV_ID, "inventory:update", CEF_STR(json));
+    return 1; 
+}
+
+forward OnInventoryMove(playerid, const json_args[]);
+public OnInventoryMove(playerid, const json_args[])
+{
+    new from_idx = -1, to_idx = -1;
+    new pos = strfind(json_args, "\"from\":");
+    if (pos != -1) from_idx = strval(json_args[pos + 7]);
+    pos = strfind(json_args, "\"to\":");
+    if (pos != -1) to_idx = strval(json_args[pos + 5]);
+    
+    if (from_idx == -1 || to_idx == -1) return 0;
+    
+    if (from_idx >= 0 && from_idx <= 8 && to_idx == 9) {
+        sacar_inventario(playerid, from_idx);
+    }
+    else if (from_idx == 9 && to_idx >= 0 && to_idx <= 8) {
+        guardar_inventario(playerid, 1); 
+    }
+    else if (from_idx >= 0 && from_idx <= 8 && to_idx == 10) {
+        sacar_inventario(playerid, from_idx); 
+    }
+    else if (from_idx == 10 && to_idx >= 0 && to_idx <= 8) {
+        guardar_inventario(playerid, 2); 
+    }
+    
+    EnviarDatosInventario(playerid);
+    return 1;
+}
+
+forward OnInventoryUse(playerid, index);
+public OnInventoryUse(playerid, index)
+{
+    if (index >= 0 && index <= 8) {
+        sacar_inventario(playerid, index); 
+    }
+    EnviarDatosInventario(playerid);
+    return 1;
+}
+
+forward OnInventoryEquip(playerid, index);
+public OnInventoryEquip(playerid, index)
+{
+    if (index >= 0 && index <= 10) {
+        pc_cmd_espalda(playerid); 
+    }
+    EnviarDatosInventario(playerid);
+    return 1;
+}
+
+forward OnInventoryDrop(playerid, index);
+public OnInventoryDrop(playerid, index)
+{
+    new obj_id = 0, cant = 0;
+    new Float:x, Float:y, Float:z;
+    GetPlayerPos(playerid, x, y, z);
+    
+    if (index >= 0 && index <= 8) {
+        obj_id = InfoPersonaje[playerid][pBolsillo][index];
+        cant = InfoPersonaje[playerid][pBolsilloCant][index];
+        if (obj_id != 0) {
+            InfoPersonaje[playerid][pBolsillo][index] = 0;
+            InfoPersonaje[playerid][pBolsilloCant][index] = 0;
+        }
+    }
+    else if (index == 9) {
+        obj_id = InfoPersonaje[playerid][pManoDerecha];
+        cant = InfoPersonaje[playerid][pManoDerechaCant];
+        if (obj_id != 0) {
+            InfoPersonaje[playerid][pManoDerecha] = 0;
+            InfoPersonaje[playerid][pManoDerechaCant] = 0;
+            RemovePlayerAttachedObject(playerid, 7);
+            ResetPlayerWeapons(playerid);
+        }
+    }
+    else if (index == 10) {
+        obj_id = InfoPersonaje[playerid][pManoIzquierda];
+        cant = InfoPersonaje[playerid][pManoIzquierdaCant];
+        if (obj_id != 0) {
+            InfoPersonaje[playerid][pManoIzquierda] = 0;
+            InfoPersonaje[playerid][pManoIzquierdaCant] = 0;
+            RemovePlayerAttachedObject(playerid, 8);
+        }
+    }
+    
+    if (obj_id != 0) {
+        tirar_objeto(obj_id, cant, x, y, z, GetPlayerVirtualWorld(playerid), GetPlayerInterior(playerid), 1);
+        SendPlayerChatMessage(playerid, COLOR_GREY, "Has tirado el objeto al suelo.");
+        
+        new query[512];
+        if (index >= 0 && index <= 8) mysql_format(db_samp, query, sizeof query, "UPDATE personajes SET Bolsillo_%d = 0, Cantidad_bolsillo_%d = 0 WHERE ID = '%d'", index+1, index+1, InfoPersonaje[playerid][pID]);
+        else if (index == 9) mysql_format(db_samp, query, sizeof query, "UPDATE personajes SET Mano_derecha = 0, Cantidad_mano_derecha = 0 WHERE ID = '%d'", InfoPersonaje[playerid][pID]);
+        else if (index == 10) mysql_format(db_samp, query, sizeof query, "UPDATE personajes SET Mano_izquierda = 0, Cantidad_mano_izquierda = 0 WHERE ID = '%d'", InfoPersonaje[playerid][pID]);
+        mysql_tquery(db_samp, query);
+    }
+    
+    EnviarDatosInventario(playerid);
+    return 1;
 }
 
 GetNameObjeto(modelo)
@@ -630,7 +544,7 @@ sacar_inventario(playerid, id)
 			PonerObjeto(playerid, 1, Bol);
 			InfoPersonaje[playerid][pBolsillo][id] = 0;
 			InfoPersonaje[playerid][pBolsilloCant][id] = 0;
-			SendClientMessageEx(playerid, 0x828BFDFF, "Coges tu %s en mano derecha, se pasó tu %s a la otra mano.", InfoInventario[Bol][NombreObjeto], InfoInventario[x_bol][NombreObjeto]);
+			SendClientMessageEx(playerid, 0x828BFDFF, "Coges tu %s en mano derecha, se pas?? tu %s a la otra mano.", InfoInventario[Bol][NombreObjeto], InfoInventario[x_bol][NombreObjeto]);
 			mysql_format(db_samp, query, sizeof query, "UPDATE personajes SET Bolsillo_%d = '%d', Cantidad_bolsillo_%d = '%d', Mano_derecha = '%d', Cantidad_mano_derecha = '%d', Mano_izquierda = '%d', Cantidad_mano_izquierda = '%d' WHERE ID = '%d'",
 			id+1, InfoPersonaje[playerid][pBolsillo][id], id+1, InfoPersonaje[playerid][pBolsilloCant][id], InfoPersonaje[playerid][pManoDerecha], InfoPersonaje[playerid][pManoDerechaCant], InfoPersonaje[playerid][pManoIzquierda], InfoPersonaje[playerid][pManoIzquierdaCant], InfoPersonaje[playerid][pID]);
 			mysql_tquery(db_samp, query);
@@ -661,7 +575,7 @@ sacar_inventario(playerid, id)
 guardar_inventario(playerid, mano)
 {
 	new query[512];
-	if (GetPVarInt(playerid, "EstaCrack") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar este comando mientras estás herido.");
+	if (GetPVarInt(playerid, "EstaCrack") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar este comando mientras est??s herido.");
 	if (mano == 1)
 	{
 		if (InfoPersonaje[playerid][pManoDerecha] == 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "No tienes un objeto en tu mano derecha.");

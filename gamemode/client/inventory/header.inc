@@ -1,6 +1,9 @@
 //sistema de inventario/bolsillos:
 #define MAX_OBJETOS_S 300
 
+#define CEF_INV_ID   1000
+#define CEF_INV_URL  "http://cef/inventory/index.html"
+
 enum dData
 {
 	DropID,
