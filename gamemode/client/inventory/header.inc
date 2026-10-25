@@ -4,6 +4,29 @@
 #define CEF_INV_ID   1000
 #define CEF_INV_URL  "http://cef/inventory/index.html"
 
+new bool:Abierto[MAX_PLAYERS];
+new bool:InventarioAbierto[MAX_PLAYERS];
+new gCefInvEstado[MAX_PLAYERS];
+
+#define INV_BROWSER_ID      CEF_INV_ID
+#define INV_URL             CEF_INV_URL
+#define INV_RESOURCE        "inventory"
+#define INV_BAG_SLOTS       9
+#define INV_TOTAL_SLOTS     12
+#define INV_SLOT_RHAND      9
+#define INV_SLOT_LHAND      10
+#define INV_SLOT_BACK       11
+#define INV_OPEN_KEY        0x49
+#define INV_COOLDOWN_MS     250
+#define INV_GIVE_RANGE      3.0
+
+#if !defined INV_GET_MONEY
+    #define INV_GET_MONEY(%0)   GetPlayerMoney(%0)
+#endif
+
+new bool:gInvPageReady[MAX_PLAYERS];
+new gInvLastAction[MAX_PLAYERS];
+
 enum dData
 {
 	DropID,

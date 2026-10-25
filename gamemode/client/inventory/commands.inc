@@ -208,7 +208,7 @@ cmd:estilobolsillos(playerid)
 	if (InfoCuenta[playerid][jEstiloBolsillos] != 0)
 	{
 		InfoCuenta[playerid][jEstiloBolsillos] = 0;
-		ShowTDN(playerid, "Ahora ver√°s el sistema de bolsillos en ~b~~h~pantalla~w~.");
+		ShowTDN(playerid, "Ahora veras el sistema de bolsillos en ~b~~h~pantalla~w~.");
 	}
 	else
 	{
@@ -222,63 +222,9 @@ alias:estilobolsillos("estilobolsillo");
 
 cmd:bol(playerid)
 {
-	//estilo pantalla
-	if (InfoCuenta[playerid][jEstiloBolsillos] == 0) return SetPlayerInventario(playerid, 1);
-	//estilo di√°log
-	new dialog[1024], dialog2[256], count = 0, gformat[40];
-	Loop(x, 9, 0)
-	{
-		if (InfoPersonaje[playerid][pBolsillo][x] != 0)
-		{
-			format(dialog2, sizeof dialog2, "{FFFFFF}%s\n", slot_inv(InfoPersonaje[playerid][pBolsillo][x], InfoPersonaje[playerid][pBolsilloCant][x]));
-			strcat(dialog, dialog2);
-			//conteo
-			format(gformat, sizeof gformat, "RanuraInv%d", count);
-			SetPVarInt(playerid, gformat, x);
-			count++;
-		}
-	}
-	if (count != 0)
-	{
-		new ex_count = 0;
-		if (InfoPersonaje[playerid][pManoDerecha] != 0) ex_count++;
-		if (InfoPersonaje[playerid][pManoIzquierda] != 0) ex_count++;
-		if (InfoPersonaje[playerid][pEspalda] != 0) ex_count++;
-		if (ex_count != 0)
-		{
-			strcat(dialog, "{b42d2d}--------------------\n");
-			format(gformat, sizeof(gformat), "RanuraInv%d", count);
-			SetPVarInt(playerid, gformat, 9);
-			count++;
-		}
-	}
-	if (InfoPersonaje[playerid][pManoDerecha] != 0)
-	{
-		format(dialog2, sizeof dialog2, "{FFFFFF}Mano derecha: %s\n", slot_inv(InfoPersonaje[playerid][pManoDerecha], InfoPersonaje[playerid][pManoDerechaCant]));
-		strcat(dialog, dialog2);
-		format(gformat, sizeof gformat, "RanuraInv%d", count);
-		SetPVarInt(playerid, gformat, 10);
-		count++;
-	}
-	if (InfoPersonaje[playerid][pManoIzquierda] != 0)
-	{
-		format(dialog2, sizeof dialog2, "{FFFFFF}Mano izquierda: %s\n", slot_inv(InfoPersonaje[playerid][pManoIzquierda], InfoPersonaje[playerid][pManoIzquierdaCant]));
-		strcat(dialog, dialog2);
-		format(gformat, sizeof gformat, "RanuraInv%d", count);
-		SetPVarInt(playerid, gformat, 11);
-		count++;
-	}
-	if (InfoPersonaje[playerid][pEspalda] != 0)
-	{
-		format(dialog2, sizeof dialog2, "{FFC800}%s:{FFFFFF} %s", GetParteToy(playerid, 7), slot_inv(InfoPersonaje[playerid][pEspalda], InfoPersonaje[playerid][pEspaldaCant]));
-		strcat(dialog, dialog2);
-		format(gformat, sizeof gformat, "RanuraInv%d", count);
-		SetPVarInt(playerid, gformat, 12);
-		count++;
-	}
-	if (count == 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No tienes nada que guardar o sacar de tus bolsillos.");
-	Dialog_Show(playerid, OpcionInventario, DIALOG_STYLE_LIST, "Inventario", dialog, "Continuar", "Salir");
-	return 1;
+    if (InventarioAbierto[playerid]) SetPlayerInventario(playerid, 2); // Si est· abierto, CERRAR
+    else SetPlayerInventario(playerid, 1); // Si est· cerrado, ABRIR
+    return 1;
 }
 alias:bol("inv", "inventario", "bolsillos");
 
