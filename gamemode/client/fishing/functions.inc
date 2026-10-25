@@ -16,13 +16,13 @@ static Fisherman_KeyGameCallback(playerid, bool:success)
 
         IsPlayerFishing[playerid] = false;
                 
-        ShowInfoForPlayer(playerid, "¡Bien ahí! Has pescado un pez.", 3000);
+        ShowNotification(playerid, "Pesca", "¡Bien ahí! Conseguiste un pescado.", "success", 3000);
         ApplyAnimation(playerid, "OTB", "WTCHRACE_WIN", 4.1, false, false, false, false, 0, true);
     }
     else
     {
         ApplyAnimation(playerid, "OTB", "WTCHRACE_LOSE", 4.1, false, false, false, false, 0, true);
-        ShowInfoForPlayer(playerid, "¡Fallaste! el pez se te escapó", 3000);
+        ShowNotification(playerid, "Pesca", "¡Fallaste! el pez se te escapó...", "error", 3000);
     }
 
     RemovePlayerAttachedObject(playerid, 9);
@@ -43,8 +43,9 @@ FishingRod_OnUse(playerid, slot)
         ApplyAnimation(playerid, "SWORD", "SWORD_IDLE", 4.1, true, false, false, false, 0, true);
     }
     else
-        ShowInfoForPlayer(playerid, "Tienes que estar frente al agua para poder pescar.", 3000);
-
+    {
+        ShowNotification(playerid, "Pesca", "Tienes que estar frente al agua para poder pescar.", "error", 3000);
+    }
     return 1;
 }
 

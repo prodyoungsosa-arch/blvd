@@ -45,18 +45,35 @@ SendRadioMessage(faccion, color, const gformat[], tipo)
 			SendSplitMessage(playerid, color, gformat);
 			//ninguno
 			if (tipo == 0) { }
+
 			//centralita
 			if (tipo == 1) { PlayAudioStreamForPlayer(playerid, "https://cdn.discordapp.com/attachments/900954544635256833/961466983478595614/Central.mp3"); }
+			
 			//oficial caido
 			if (tipo == 2) { PlayAudioStreamForPlayer(playerid, "https://cdn.discordapp.com/attachments/900954544635256833/961468042238365796/Oficial_caido.mp3"); }
+			
 			//solicita refuerzos
 			if (tipo == 3) { PlayAudioStreamForPlayer(playerid, "https://cdn.discordapp.com/attachments/900954544635256833/961467558068903986/Solicita_refuerzos.mp3"); }
+			
 			//persona herida
 			if (tipo == 4) { PlayAudioStreamForPlayer(playerid, "https://cdn.discordapp.com/attachments/900954544635256833/961468907259047997/Persona_herida.mp3"); }
+			
 			//robo normal
 			if (tipo == 5) { PlayAudioStreamForPlayer(playerid, "https://cdn.discordapp.com/attachments/900954544635256833/961469862797000704/Robo_normal.mp3"); }
+			
 			//robo vehiculo
 			if (tipo == 6) { PlayAudioStreamForPlayer(playerid, "https://cdn.discordapp.com/attachments/900954544635256833/961469658135932938/Robo_a_carro.mp3"); }
+		}
+	}
+}
+
+SendPoliceNotification(faccion, const name[] = "Aviso - Central", const text[])
+{
+	foreach(Player, playerid) if (IsPlayerConnectedEx(playerid) && InfoPersonaje[playerid][pTogFaccion] == 1)
+	{
+		if (InfoPersonaje[playerid][pMiembro] == faccion || InfoPersonaje[playerid][pLider] == faccion)
+		{
+			ShowNotification(playerid, name, text, "police", 10000, "rc");
 		}
 	}
 }
