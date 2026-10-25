@@ -20,7 +20,7 @@ new InfoToy[][ToyEnum] =
 	{19556, 4, "Guante derecho", 1},
 	{19631, 2, "Martillo", 1},
 	{19626, 2, "Pala", 1},
-	{19623, 20, "Cámara de fotos", 1},
+	{19623, 20, "C�mara de fotos", 1},
 	{19893, 60, "Computador portatil", 3},
 	{19942, 4, "Radio portatil", 1},
 	{19904, 15, "Chaleco naranja", 1},
@@ -51,7 +51,7 @@ new InfoToy[][ToyEnum] =
 	{19519, 1, "Peluca 8", 1},
 	{18641, 4, "Linterna", 1},
 	{18644, 2, "Destornillador", 1},
-	{18874, 20, "Teléfono", 1},
+	{18874, 20, "Tel�fono", 1},
 	{18890, 4, "Rastrillo", 1},
 	{18891, 3, "Bandana 1", 1},
 	{18892, 3, "Bandana 2", 1},
@@ -93,7 +93,7 @@ new InfoToy[][ToyEnum] =
 	{19469, 2, "Cinta blanca", 1},
 	{19330, 7, "Casco de bombero", 1},
 	{19331, 7, "Casco de bombero 2", 1},
-	{18974, 22, "Máscara de zorro", 3},
+	{18974, 22, "M�scara de zorro", 3},
 	{18645, 15, "Casco roja", 3},
 	{18976, 14, "Casco azul", 3},
 	{18978, 14, "Casco blanco", 1},
@@ -127,7 +127,7 @@ new InfoToy[][ToyEnum] =
 	{19033, 3, "Lentes N negro", 1},
 	{19034, 3, "Lentes N carrera", 1},
 	{19035, 3, "Lentes N azul", 1},
-	{19036, 12, "Máscara de terror", 1},
+	{19036, 12, "M�scara de terror", 1},
 	{19039, 40, "Reloj oro", 1},
 	{19040, 25, "Reloj plata", 1},
 	{19041, 12, "Reloj cobre", 1},
@@ -148,18 +148,18 @@ new InfoToy[][ToyEnum] =
 	{19066, 30, "Gorro de santa HXMas", 3},
 	{19078, 5, "Loro", 3},
 	{19085, 2, "Parche de ojo", 1},
-	{19163, 40, "Máscara de CJ", 3},
+	{19163, 40, "M�scara de CJ", 3},
 	{19317, 10, "Guitarra roja", 1},
 	{19318, 25, "Guitarra X", 1},
 	{19319, 50, "XFireGuitarra", 3},
 	{1210, 5, "Maleta", 1},
 	{19346, 1, "HotDog", 1},
-	{19472, 50, "Máscara de gas", 3},
+	{19472, 50, "M�scara de gas", 3},
 	{19421, 3, "Audifonos blanco", 1},
 	{19422, 3, "Audifonos negro", 1},
 	{19423, 3, "Audifonos rosa", 1},
 	{19424, 3, "Audifonos azul", 1},
-	{11704, 40, "Máscara demonio", 3}, //agregados x edinsonwalker (18/01/2020)
+	{11704, 40, "M�scara demonio", 3}, //agregados x edinsonwalker (18/01/2020)
 	{1242, 44, "Chaleco de seguridad", 3},
 	{371, 44, "Paracaidas", 3},
 	{19801, 21, "Pasamontañas", 2},
@@ -167,7 +167,7 @@ new InfoToy[][ToyEnum] =
 	{19347, 2, "Estrella", 2},
 	{19515, 19, "Chaleco tactico gris", 2},
 	{19514, 15, "Casco gris", 2},
-	{368, 10, "Visión nocturna", 2},
+	{368, 10, "Visi�n nocturna", 2},
 	{19781, 12, "Sargento I", 2},
 	{19782, 12, "Sargento II", 2},
 	{19783, 12, "Oficial II", 2},
@@ -290,9 +290,9 @@ new InfoColorToy[][ctInfo] =
 	// ROJO
 	{"0xCD5C5CFF", "Rojo indio"},
 	{"0xF08080FF", "Coral claro"},
-	{"0xFA8072FF", "Salmón"},
-	{"0xE9967AFF", "Salmón oscuro"},
-	{"0xFFA07AFF", "Salmón claro"},
+	{"0xFA8072FF", "Salm�n"},
+	{"0xE9967AFF", "Salm�n oscuro"},
+	{"0xFFA07AFF", "Salm�n claro"},
 	{"0xDC143CFF", "Carmesí"},
 	{"0xFF0000FF", "Rojo"},
 	{"0xB22222FF", "Ladrillo fuego"},
@@ -324,7 +324,7 @@ cmd:ctoys(playerid)
 {
 	if (IsPlayerInRangeOfPoint(playerid, 5.0, 802.5069,-1419.6813,1016.4688))
 	{
-		if (InfoCuenta[playerid][jVIP] != 2) return SendPlayerChatMessage(playerid, COLOR_GREY, "* Acceso sólo para usuarios VIP Level 2.");
+		if (InfoCuenta[playerid][jVIP] != 2) return SendPlayerChatMessage(playerid, COLOR_GREY, "* Acceso s�lo para usuarios VIP Level 2.");
 		Loop(id, 7, 0) if (InfoPersonaje[playerid][ptModelo][id] == 0)
 		{
 			slotselection[playerid] = id;
@@ -337,7 +337,7 @@ cmd:ctoys(playerid)
 			ShowModelSelectionMenuEx(playerid, ToyMuestra, count, "Toys V.I.P", Compra_Toy);
 			return 1;
 		}
-		SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes tener más de 7 toys.");
+		SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes tener m�s de 7 toys.");
 		return 1;
 	}
 	return 1;

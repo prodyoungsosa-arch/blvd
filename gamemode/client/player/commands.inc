@@ -2,7 +2,7 @@ cmd:ext(playerid, params[])
 {
 	if (!CheckTimer(10, DopTimer[playerid]))
 	{
-		if (sscanf(params, "s[256]", params)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /ext (Mensaje)");
+		if (sscanf(params, "s[256]", params)) return ShowNotification(playerid, "Informacion", "Utiliza: /ext (Mensaje)", "info");
 		new gformat[320];
 		//puertas dinamicas
 		Loop(id, totalpuertas, 1) if (InfoPuerta[id][pdExteriorX] != 0.0)
@@ -71,18 +71,20 @@ cmd:ext(playerid, params[])
 			}
 		}
 		//error
-		SendPlayerChatMessage(playerid, COLOR_GREY, "* No estas en ninguna entrada/salida.");
+		ShowNotification(playerid, "Informacion", "* No estas en ninguna entrada/salida.", "info");
     }
 	else
 	{
-		SendClientMessageEx(playerid, COLOR_GREY, "Puedes volver a usar este comando en %s.", Segundos_tiempo( CheckTimer(10, DopTimer[playerid]) ));
+		new string[32];
+		format(string, sizeof string, "Puedes volver a usar este comando en %d segundos.", (DopTimer[playerid] + 10000 - gettime()) / 1000);
+		ShowNotification(playerid, "Informacion", string, "info");
     }
 	return 1;
 }
 
 cmd:lugar(playerid)
 {
-	if (GetPlayerInterior(playerid) != 0 && GetPlayerVirtualWorld(playerid) != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No puedes saber tu ubicación en interiores.");
+	if (GetPlayerInterior(playerid) != 0 && GetPlayerVirtualWorld(playerid) != 0) return ShowNotification(playerid, "Informacion", "* No puedes saber tu ubicación en interiores.", "info");
 	new Float: x, Float: y, Float: z, locatziona[32];
 	GetPlayerPos(playerid, x, y, z);
 	Get2DZone(locatziona, MAX_ZONE_NAME, x, y, z);
@@ -93,10 +95,10 @@ alias:lugar("varyna");
 
 cmd:chaleco(playerid)
 {
-	if(pDroga[playerid][TiempoHeroina] > 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No puedes quitarte el chaleco mientras estas bajo el efecto de una droga.");
+	if(pDroga[playerid][TiempoHeroina] > 0) return ShowNotification(playerid, "Informacion", "* No puedes quitarte el chaleco mientras estas bajo el efecto de una droga.", "info");
 	if (InfoPersonaje[playerid][pChaleco] != 0.0)
 	{
-		if (InfoPersonaje[playerid][pManoDerecha] > 0 && InfoPersonaje[playerid][pManoIzquierda] > 0) { SendPlayerChatMessage(playerid, COLOR_GREY, "* No puedes quitarte el chaleco con ambas manos ocupadas."); return 1; }
+		if (InfoPersonaje[playerid][pManoDerecha] > 0 && InfoPersonaje[playerid][pManoIzquierda] > 0) { ShowNotification(playerid, "Informacion", "* No puedes quitarte el chaleco con ambas manos ocupadas.", "info"); return 1; }
 		if (InfoPersonaje[playerid][pManoDerecha] == 0)
 		{
 			SendClientMessageEx(playerid, COLOR_YELLOW, "Te retiras el chaleco (%d) y lo dejas en tu mano derecha.", floatround(InfoPersonaje[playerid][pChaleco]));
@@ -1140,8 +1142,8 @@ cmd:apgarage(playerid)
 {
 	if (IsPlayerInRangeOfPoint(playerid, 15.0, 1622.9014, -1852.7107, 13.5014))
 	{
-		if (!member_faccion(playerid, 1, 4)) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No eres miembro de LSPD o LSCSD.");
-		if (open_embargo == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "* El portón del depósito ya esta abierto.");
+		if (!member_faccion(playerid, 1, 4)) return ShowNotification(playerid, "Error", "* No eres miembro de LSPD o LSCSD.", "error");
+		if (open_embargo == 1) return ShowNotification(playerid, "Error", "* El portón del depósito ya esta abierto.", "error");
         MoveDynamicObject(depositoembargo, 1612.0996,-1861.5996,15.3000, 2.5);
 		SetTimer("ClosedDeposito", 7000, false);
 		open_embargo = 1;
@@ -1150,7 +1152,7 @@ cmd:apgarage(playerid)
 	//USMC
 	if (IsPlayerInRangeOfPoint(playerid, 20.0, 134.5650, 1941.5498, 21.6258))
 	{
-		if (!member_faccion(playerid, 3)) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No eres miembro de USMC.");
+		if (!member_faccion(playerid, 3)) return ShowNotification(playerid, "Error", "* No eres miembro de USMC.", "error");
 		MoveDynamicObject(porton_usmc, 148.5000, 1941.5498, 21.6258, 5.0);
 		SetTimer("Closed_USMC", 7000, false);
 	}
@@ -1160,13 +1162,13 @@ alias:apgarage("deposito", "porton");
 
 cmd:atar(playerid, params[])
 {
-	if (InfoPersonaje[playerid][pHorasOn] < 10) return SendPlayerChatMessage(playerid, COLOR_GREY, "* Necesitas haber jugado al menos 10 horas.");
-	if (GetPVarInt(playerid, "EstaCrack") != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No puedes usar este comando mientras estas herido.");
-	if (Rope[playerid] == 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No tienes una cuerda.");
+	if (InfoPersonaje[playerid][pHorasOn] < 10) return ShowNotification(playerid, "Error", "* Necesitas haber jugado al menos 10 horas.", "error");
+	if (GetPVarInt(playerid, "EstaCrack") != 0) return ShowNotification(playerid, "Error", "* No puedes usar este comando mientras estas herido.", "error");
+	if (Rope[playerid] == 0) return ShowNotification(playerid, "Error", "* No tienes una cuerda.", "error");
 	new playerid2, string[129];
-	if (sscanf(params, "d", playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Utiliza: /atar (ID)");
-	if (!IsPlayerConnectedEx(playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Jugador desconectado.");
-	if (!CercaDelMarica(4.0,playerid,playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Jugador muy lejos.");
+	if (sscanf(params, "d", playerid2)) return ShowNotification(playerid, "Informacion", "Utiliza: /atar (ID)", "info");
+	if (!IsPlayerConnectedEx(playerid2)) return ShowNotification(playerid, "Error", "Jugador desconectado.", "error");
+	if (!CercaDelMarica(4.0,playerid,playerid2)) return ShowNotification(playerid, "Error", "Jugador muy lejos.", "error");
 	if (Tied[playerid2] == 0)
 	{
 		Tied[playerid2] = 1;
@@ -1186,13 +1188,13 @@ cmd:atar(playerid, params[])
 
 cmd:vendar(playerid, params[])
 {
-	if (InfoPersonaje[playerid][pHorasOn] < 10) return SendPlayerChatMessage(playerid, COLOR_GREY, "* Necesitas haber jugado al menos 10 horas.");
-	if (GetPVarInt(playerid, "EstaCrack") != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No puedes usar este comando mientras estas herido.");
-	if (Rope[playerid] == 0) return SendPlayerChatMessage(playerid, COLOR_WHITE, "No tienes venda.");
+	if (InfoPersonaje[playerid][pHorasOn] < 10) return ShowNotification(playerid, "Error", "* Necesitas haber jugado al menos 10 horas.", "error");
+	if (GetPVarInt(playerid, "EstaCrack") != 0) return ShowNotification(playerid, "Error", "* No puedes usar este comando mientras estas herido.", "error");
+	if (Rope[playerid] == 0) return ShowNotification(playerid, "Error", "* No tienes una cuerda.", "error");
 	new playerid2, string[129];
-	if (sscanf(params, "d", playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Utiliza: /vendar (ID)");
-	if (!IsPlayerConnectedEx(playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Jugador desconectado.");
-	if (!CercaDelMarica(4.0, playerid, playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Jugador muy lejos.");
+	if (sscanf(params, "d", playerid2)) return ShowNotification(playerid, "Informacion", "Utiliza: /vendar (ID)", "info");
+	if (!IsPlayerConnectedEx(playerid2)) return ShowNotification(playerid, "Error", "Jugador desconectado.", "error");
+	if (!CercaDelMarica(4.0, playerid, playerid2)) return ShowNotification(playerid, "Error", "Jugador muy lejos.", "error");
 	if (Blinded[playerid2] == 0)
 	{
 		Blinded[playerid2] = 1;
@@ -1211,40 +1213,7 @@ cmd:vendar(playerid, params[])
 	return 1;
 }
 
-/*cmd:me(playerid, params[])
-{
-	if (isnull(params) || strlen(params) > 256) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /me (acción)");
-	new string[256];
-	format(string, sizeof string, "%s %s", GetNameFormat(playerid), params);
-	ProxDetector(20.0, playerid, string, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE, COLOR_PURPLE);
-	return 1;
-}
 
-cmd:do(playerid, params[])
-{
-	if (isnull(params)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /do (entorno o aclaración)");
-	new string[256];
-	format(string, sizeof string, "[%s] %s", GetNameFormat(playerid), params);
-	ProxDetector(30.0, playerid, string, COLOR_LIGHTGREEN,COLOR_LIGHTGREEN,COLOR_LIGHTGREEN,COLOR_LIGHTGREEN,COLOR_LIGHTGREEN);
-	return 1;
-}
-cmd:s(playerid, params[])
-{
-	new string[256];
-	if (isnull(params)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /s (texto a susurrar)");
-	format(string, sizeof string, "%s susurra: %s", GetNameFormat(playerid), params);
-	ProxDetector(3.0, playerid, string,COLOR_FADE1,COLOR_FADE2,COLOR_FADE3,COLOR_FADE4,COLOR_FADE5);
-	return 1;
-}
-
-cmd:g(playerid, params[])
-{
-	new string[256];
-	if (isnull(params)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /g (texto a gritar)");
-	format(string, sizeof string, "%s grita: Â¡%s!", GetNameFormat(playerid), params);
-	ProxDetector(30.0, playerid, string,COLOR_WHITE,COLOR_WHITE,COLOR_WHITE,COLOR_FADE1,COLOR_FADE2);
-	return 1;
-}*/
 cmd:me(playerid, params[])
 {
     if (isnull(params) || strlen(params) > 256) {
@@ -1291,14 +1260,14 @@ cmd:g(playerid, params[])
 
 cmd:ame(playerid, params[])
 {
-	if (isnull(params) || strlen(params) > 256) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /ame (acción corta)");
+	if (isnull(params) || strlen(params) > 256) return ShowNotification(playerid, "Informacion", "Utiliza: /ame (acción corta)", "info");
 	rol_ame(playerid, params);
 	return 1;
 }
 
 cmd:b(playerid, params[])
 {
-	if (isnull(params)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /b (ooc chat)");
+	if (isnull(params)) return ShowNotification(playerid, "Informacion", "Utiliza: /b (ooc chat)", "info");
 	new string[320];
 	if (AdminDuty[playerid] != 0) format(string, sizeof string, "{FF2F2F}[STAFF]{C8C8C8} %s: (( %s ))", InfoCuenta[playerid][jNombre], params);
 	else format(string, sizeof string, "[OOC] %s: (( %s ))", NombreOriginal(playerid), params);
@@ -1310,15 +1279,15 @@ cmd:eliminarcheckpoint(playerid)
 {
     DeletePVar(playerid, "TrackCar");
     DisablePlayerCheckpoint(playerid);
-    SendPlayerChatMessage(playerid, 0xA2DC35FF, "Todos los checkpoints fueron eliminados.");
+    ShowNotification(playerid, "Informacion", "Todos los checkpoints fueron eliminados.", "info");
 	return 1;
 }
 alias:eliminarcheckpoint("eliminarcp", "borrarcp");
 
 cmd:comprarlicencia(playerid)
 {
-	if (!IsPlayerInRangeOfPoint(playerid, 5.0, 1561.7712,-1673.9811,2110.5364)) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No estas en la comisaria de los santos.");
-	if (InfoPersonaje[playerid][pEstrellas] != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "Tienes órden de arresto, te prohibieron la adquisición de licencias.");
+	if (!IsPlayerInRangeOfPoint(playerid, 5.0, 1561.7712,-1673.9811,2110.5364)) return ShowNotification(playerid, "Error", "* No estas en la comisaria de los santos.", "error");
+	if (InfoPersonaje[playerid][pEstrellas] != 0) return ShowNotification(playerid, "Error", "Tienes órden de arresto, te prohibieron la adquisición de licencias.", "error");
 	Dialog_Show(playerid, ShowBuyLicencias, DIALOG_STYLE_LIST, "Licencias", "Conducir ($900)\nNavegación ($2,000)\nVuelo ($3,500)", "Comprar", "Salir");
 	return 1;
 }
@@ -1326,7 +1295,7 @@ cmd:comprarlicencia(playerid)
 
 cmd:reply(playerid, params[])
 {
-	if (isnull(params)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /reply (texto)");
+	if (isnull(params)) return ShowNotification(playerid, "Informacion", "Utiliza: /reply (texto)", "info");
 	new string[128], reportid = -1;
 	Loop(i, MAX_REPORTS, 0)
 	{
@@ -1335,8 +1304,8 @@ cmd:reply(playerid, params[])
 			reportid = i;
 		}
 	}
-	if (reportid == -1) return SendPlayerChatMessage(playerid, COLOR_WHITE, "No estas en un reporte ahora mismo.");
-	if (!IsPlayerConnectedEx(Reports[reportid][CheckingReport])) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Esa ID es invalida.");
+	if (reportid == -1) return ShowNotification(playerid, "Error", "No estas en un reporte ahora mismo.", "error");
+	if (!IsPlayerConnectedEx(Reports[reportid][CheckingReport])) return ShowNotification(playerid, "Error", "Esa ID es invalida.", "error");
 	format(string, sizeof string, "{FF0000}[RID]{FFFFFF} %s(ID: %d): %s", NombreOriginal(playerid), playerid, params);
 	SendPlayerChatMessage(Reports[reportid][CheckingReport], COLOR_YELLOW, string);
 	format(string, sizeof string, "{F5DEB3}Respuesta enviada{FFFFFF} a %s: %s", InfoCuenta[Reports[reportid][CheckingReport]][jNombre], params);
@@ -1395,9 +1364,9 @@ cmd:id(playerid, params[])
 cmd:duda(playerid, params[])
 {
 	new Texto[128];
-	if (JustDuda[playerid] > 0) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Espera 60 segundos para mandar otra duda.");
-	if (AdminOnlineCheck() == 0) return SendPlayerChatMessage(playerid, COLOR_WHITE, "No hay {FF0000}administradores online{FFFFFF} en este momento, intenta mas tarde.");
-	if (sscanf(params, "s[128]", Texto)) return SendPlayerChatMessage(playerid, -1, "Utiliza: {3E62F4}/duda{FFFFFF} (texto)");
+	if (JustDuda[playerid] > 0) return ShowNotification(playerid, "Error", "Espera 60 segundos para mandar otra duda.", "error");
+	if (AdminOnlineCheck() == 0) return ShowNotification(playerid, "Informacion", "No hay {FF0000}administradores online{FFFFFF} en este momento, intenta mas tarde.", "info");
+	if (sscanf(params, "s[128]", Texto)) return ShowNotification(playerid, "Informacion", "Utiliza: {3E62F4}/duda{FFFFFF} (texto)", "info");
 	new string[322];
 	format(string, sizeof string, "{2F99B5}%s(%d){FFFFFF} pregunta: {FF0000}%s", NombreOriginal(playerid), playerid, Texto);
     SendAdminMessage(0xFF0000FF, string);
@@ -1410,7 +1379,7 @@ cmd:duda(playerid, params[])
 }
 
 cmd:cinturon(playerid, params[]){
-    if(!IsPlayerInAnyVehicle(playerid)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "No estas en un vehiculo.");
+    if(!IsPlayerInAnyVehicle(playerid)) return ShowNotification(playerid, "Error", "No estas en un vehiculo.", "error");
 	new string[50 + MAX_PLAYER_NAME];
     if(IsPlayerInAnyVehicle(playerid) == 1 && Seatbelt[playerid] == 0){
         Seatbelt[playerid] = 1;
@@ -1428,8 +1397,8 @@ cmd:cinturon(playerid, params[]){
 
 cmd:vercinturon(playerid, params[]){
 	new playerid2;
-	if(sscanf(params, "d", playerid2)) return SendPlayerChatMessage(playerid, COLOR_WHITE, "Utiliza: /vercinturon (Jugador)");
-    if(GetPlayerState(playerid2) == PLAYER_STATE_ONFOOT) return SendPlayerChatMessage(playerid,COLOR_GREY,"Ese jugador no esta en un vehiculo!");
+	if(sscanf(params, "d", playerid2)) return ShowNotification(playerid, "Error", "Utiliza: /vercinturon (Jugador)", "error");
+    if(GetPlayerState(playerid2) == PLAYER_STATE_ONFOOT) return ShowNotification(playerid, "Error", "Ese jugador no esta en un vehiculo!", "error");
     if (CercaDelMarica(9.0, playerid, playerid2)){
 		new string[128];
         new stext[4];
@@ -1476,7 +1445,7 @@ alias:animaciones("acciones");
 cmd:oficina(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /oficina (1-10)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /oficina (1-10)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"INT_OFFICE", "FF_Dam_Fwd", 4.0, 0, 0, 0, 1, 0);
@@ -1497,7 +1466,7 @@ cmd:oficina(playerid, params[])
 cmd:brazos(playerid, params[])
 {
 	new animacion;
-	if (sscanf(params, "d", animacion)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /brazos (1-6)");
+	if (sscanf(params, "d", animacion)) return ShowNotification(playerid, "Informacion", "Utiliza: /brazos (1-6)", "info");
 	switch (animacion)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"CASINO", "cards_in",4.1,0,1,1,1,1);
@@ -1514,7 +1483,7 @@ cmd:brazos(playerid, params[])
 cmd:strip(playerid, params[])
 {
 	new animacion;
-	if (sscanf(params, "d", animacion)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /strip (1-7)");
+	if (sscanf(params, "d", animacion)) return ShowNotification(playerid, "Informacion", "Utiliza: /strip (1-7)", "info");
 	switch (animacion)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"STRIP", "strip_A", 4.1, 1, 1, 1, 1, 1);
@@ -1532,7 +1501,7 @@ cmd:strip(playerid, params[])
 cmd:mecanico(playerid, params[])
 {
 	new animacion;
-	if (sscanf(params, "d", animacion)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /mecanico (1-2)");
+	if (sscanf(params, "d", animacion)) return ShowNotification(playerid, "Informacion", "Utiliza: /mecanico (1-2)", "info");
 	switch (animacion)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"CAR", "Fixn_Car_Loop", 4.1, 1, 0, 0, 1, 1);
@@ -1545,7 +1514,7 @@ cmd:mecanico(playerid, params[])
 cmd:correr(playerid, params[])
 {
 	new animacion;
-	if (sscanf(params, "d", animacion)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /correr (1-6)");
+	if (sscanf(params, "d", animacion)) return ShowNotification(playerid, "Informacion", "Utiliza: /correr (1-6)", "info");
 	switch (animacion)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"PED", "run_civi", 4.1, 1, 1, 1, 1, 1);
@@ -1576,20 +1545,20 @@ cmd:billar(playerid, params[])
 cmd:apoyarse(playerid, params[])
 {
 	new animacion;
-	if  (sscanf(params, "d", animacion)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /apoyarse (1-2)");
+	if  (sscanf(params, "d", animacion)) return ShowNotification(playerid, "Informacion", "Utiliza: /apoyarse (1-2)", "info");
 	switch (animacion)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"GANGS", "leanIDLE", 4.0, 1, 0, 1, 1, 1);
 		case 2: ApplyAnimEx(playerid, 0,"MISC", "Plyrlean_loop", 4.0, 1, 1, 1, 1, 1);
-		default: SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /apoyarse (1-2)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /apoyarse (1-2)", "info");
 	}
 	return 1;
 }
 
 cmd:stopanim(playerid)
 {
-	if (GetPVarInt(playerid, "EstaCrack") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar esto mientras estas herido.");
- 	if (GetPVarInt(playerid, "PlayerCuffed") != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar esto en ese estado.");
+	if (GetPVarInt(playerid, "EstaCrack") == 1) return ShowNotification(playerid, "Error", "No puedes usar esto mientras estas herido.", "error");
+ 	if (GetPVarInt(playerid, "PlayerCuffed") != 0) return ShowNotification(playerid, "Error", "No puedes usar esto en ese estado.", "error");
 	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
 	ClearAnimations(playerid);
 	StopApplyAnimEx(playerid);
@@ -1598,26 +1567,26 @@ cmd:stopanim(playerid)
 
 cmd:poli(playerid, params[])
 {
-	if (GetPVarInt(playerid, "EstaCrack") != 0 || IsPlayerInAnyVehicle(playerid)) return SendPlayerChatMessage(playerid, COLOR_GREY, "* No puedes realizar esta animación dentro de un vehiculo o estado herido.");
+	if (GetPVarInt(playerid, "EstaCrack") != 0 || IsPlayerInAnyVehicle(playerid)) return ShowNotification(playerid, "Error", "* No puedes realizar esta animación dentro de un vehiculo o estado herido.", "error");
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /poli (1-4)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /poli (1-4)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"POLICE","CopTraf_Come",4.0,0,0,0,0,0);
 		case 2: ApplyAnimEx(playerid, 0,"POLICE","CopTraf_Stop",4.0,0,0,0,0,0);
 		case 3: ApplyAnimEx(playerid, 0,"POLICE","CopTraf_Away",4.0,0,0,0,0,0);
 		case 4: ApplyAnimEx(playerid, 0,"POLICE","CopTraf_Left",4.0,0,0,0,0,0);
-		default: SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /poli (1-4)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /poli (1-4)", "info");
 	}
 	return 1;
 }
 
 cmd:rendirse(playerid)
 {
-	if (GetPVarInt(playerid, "EstaCrack") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones mientras estas herido.");
- 	if (GetPVarInt(playerid, "PlayerCuffed") != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones en ese estado.");
-	if (IsPlayerInAnyVehicle(playerid)) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones mientras estes dentro de un vehiculo.");
-	if (GetPVarInt(playerid, "IsFrozen") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones porque estas congelado.");
+	if (GetPVarInt(playerid, "EstaCrack") == 1) return ShowNotification(playerid, "Error", "No puedes usar animaciones mientras estas herido.", "error");
+ 	if (GetPVarInt(playerid, "PlayerCuffed") != 0) return ShowNotification(playerid, "Error", "No puedes usar animaciones en ese estado.", "error");
+	if (IsPlayerInAnyVehicle(playerid)) return ShowNotification(playerid, "Error", "No puedes usar animaciones mientras estes dentro de un vehiculo.", "error");
+	if (GetPVarInt(playerid, "IsFrozen") == 1) return ShowNotification(playerid, "Error", "No puedes usar animaciones porque estas congelado.", "error");
 	SetPlayerSpecialAction(playerid, SPECIAL_ACTION_HANDSUP);
 	return 1;
 }
@@ -1625,7 +1594,7 @@ cmd:rendirse(playerid)
 cmd:asiento(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /asiento (1-18)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /asiento (1-18)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"Attractors","Stepsit_in",4.0,0,0,0,1,0);// Not looping
@@ -1646,7 +1615,7 @@ cmd:asiento(playerid, params[])
 		case 16: ApplyAnimEx(playerid, 0,"SUNBATHE","ParkSit_W_idleA",4.0,0,0,0,1,0);
 		case 17: ApplyAnimEx(playerid, 0,"SUNBATHE","ParkSit_W_idleB",4.0,0,0,0,1,0);
 		case 18: ApplyAnimEx(playerid, 0,"SUNBATHE","ParkSit_W_idleC",4.0,0,0,0,1,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /asiento (1-18)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /asiento (1-18)", "info");
 	}
 	return 1;
 }
@@ -1654,19 +1623,19 @@ alias:asiento("sentarse");
 
 cmd:bailar(playerid, params[])
 {
-	if (GetPVarInt(playerid, "EstaCrack") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones mientras estas herido.");
- 	if (GetPVarInt(playerid, "PlayerCuffed") != 0) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones en ese estado.");
-	if (IsPlayerInAnyVehicle(playerid)) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones mientras estes dentro de un vehiculo.");
-	if (GetPVarInt(playerid, "IsFrozen") == 1) return SendPlayerChatMessage(playerid, COLOR_GREY, "No puedes usar animaciones porque estas congelado.");
+	if (GetPVarInt(playerid, "EstaCrack") == 1) return ShowNotification(playerid, "Error", "No puedes usar animaciones mientras estas herido.", "error");
+ 	if (GetPVarInt(playerid, "PlayerCuffed") != 0) return ShowNotification(playerid, "Error", "No puedes usar animaciones en ese estado.", "error");
+	if (IsPlayerInAnyVehicle(playerid)) return ShowNotification(playerid, "Error", "No puedes usar animaciones mientras estes dentro de un vehiculo.", "error");
+	if (GetPVarInt(playerid, "IsFrozen") == 1) return ShowNotification(playerid, "Error", "No puedes usar animaciones porque estas congelado.", "error");
 	new dancestyle;
-	if (sscanf(params, "d", dancestyle)) return SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /bailar (1-4)");
+	if (sscanf(params, "d", dancestyle)) return ShowNotification(playerid, "Informacion", "Utiliza: /bailar (1-4)", "info");
 	switch (dancestyle)
 	{
 		case 1: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE1);
 		case 2: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE2);
 		case 3: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE3);
 		case 4: SetPlayerSpecialAction(playerid, SPECIAL_ACTION_DANCE4);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /bailar (1-4)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /bailar (1-4)", "info");
 	}
 	return 1;
 }
@@ -1674,13 +1643,13 @@ cmd:bailar(playerid, params[])
 cmd:rap(playerid, params[])
 {
 	new rapstyle;
-	if (sscanf(params, "d", rapstyle)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /rap (1-3)");
+	if (sscanf(params, "d", rapstyle)) return ShowNotification(playerid, "Informacion", "Utiliza: /rap (1-3)", "info");
 	switch (rapstyle)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"RAPPING","RAP_A_Loop",4.0,1,1,1,1,0);
 		case 2: ApplyAnimEx(playerid, 0,"RAPPING","RAP_B_Loop",4.0,1,1,1,1,0);
 		case 3: ApplyAnimEx(playerid, 0,"RAPPING","RAP_C_Loop",4.0,1,1,1,1,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /rap (1-3)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /rap (1-3)", "info");
 	}
 	return 1;
 }
@@ -1688,7 +1657,7 @@ cmd:rap(playerid, params[])
 cmd:cruzar(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /cruzar (1-5)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /cruzar (1-5)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0, "COP_AMBIENT", "Coplook_loop", 4.0, 0, 1, 1, 1, -1);
@@ -1696,7 +1665,7 @@ cmd:cruzar(playerid, params[])
 		case 3: ApplyAnimEx(playerid, 0, "DEALER", "DEALER_IDLE_01", 4.0, 0, 1, 1, 1, -1);
 		case 4: ApplyAnimEx(playerid, 0,"GRAVEYARD","mrnM_loop",4.0,1,0,0,0,0);
 		case 5: ApplyAnimEx(playerid, 0,"GRAVEYARD","prst_loopa",4.0,1,0,0,0,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /cruzar (1-5)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /cruzar (1-5)", "info");
 	}
 	return 1;
 }
@@ -1704,7 +1673,7 @@ cmd:cruzar(playerid, params[])
 cmd:ped(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /ped (1-26)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /ped (1-26)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"PED","JOG_femaleA",4.0,1,1,1,1,1);
@@ -1733,7 +1702,7 @@ cmd:ped(playerid, params[])
 		case 24: ApplyAnimEx(playerid, 0,"PED","WOMAN_walkpro",4.0,1,1,1,1,1);
 		case 25: ApplyAnimEx(playerid, 0,"PED","WOMAN_walksexy",4.0,1,1,1,1,1);
 		case 26: ApplyAnimEx(playerid, 0,"PED","WOMAN_walkshop",4.0,1,1,1,1,1);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /ped (1-26)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /ped (1-26)", "info");
 	}
 	return 1;
 }
@@ -1741,7 +1710,7 @@ cmd:ped(playerid, params[])
 cmd:jiggy(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /jiggy (1-15)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /jiggy (1-15)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0, "DANCING", "bd_clap",4.0,1,0,0,0,0);
@@ -1759,7 +1728,7 @@ cmd:jiggy(playerid, params[])
 		case 13: ApplyAnimEx(playerid, 0, "DANCING", "dnce_M_e",4.0,1,0,0,0,0);
 		case 14: ApplyAnimEx(playerid, 0, "HEIST9", "swt_wllshoot_in_L", 4.0, 0, 1, 1, 1, -1);
 		case 15: ApplyAnimEx(playerid, 0, "HEIST9", "swt_wllshoot_in_R", 4.0, 0, 1, 1, 1, -1);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /jiggy (1-15)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /jiggy (1-15)", "info");
 	}
 	return 1;
 }
@@ -1768,14 +1737,14 @@ alias:jiggy("danzar");
 cmd:queteden(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /fuck (1-4)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /fuck (1-4)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"ped","fucku",4.0,0,0,0,0,0);
 		case 2: ApplyAnimEx(playerid, 0,"RIOT","RIOT_FUKU",4.0,0,0,0,0,0);
 		case 3: ApplyAnimEx(playerid, 0,"MISC","Hiker_Pose",4.1,0,1,1,1,1);
 		case 4: ApplyAnimEx(playerid, 0,"MISC","Hiker_Pose_L",4.1,0,1,1,1,1);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /fuck (1-4)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /fuck (1-4)", "info");
 	}
 	return 1;
 }
@@ -1786,7 +1755,7 @@ cmd:pandillero(playerid, params[])
 	if (IsPlayerInAnyVehicle(playerid))
 	{
 		new animacion;
-		if (sscanf(params, "d", animacion)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: (1-9)");
+		if (sscanf(params, "d", animacion)) return ShowNotification(playerid, "Informacion", "Utiliza: (1-9)", "info");
 		switch (animacion)
 		{
 			case 1: ApplyAnimEx(playerid, 1, "GHANDS", 		"gsign2", 			4.0, 0, 0, 1, 0, 0);
@@ -2147,12 +2116,12 @@ cmd:robman(playerid) { ApplyAnimEx(playerid, 0, "SHOP", "ROB_Loop_Threat", 4.0, 
 cmd:cubrirse(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /cubrirse (1-2)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /cubrirse (1-2)", "info");
 	switch (anim)
 	{
 		case 1:ApplyAnimEx(playerid, 0,"ped","cower",4.0,0,0,0,0,0);
 		case 2:ApplyAnimEx(playerid, 0,"ped","DUCK_cower",4.0,1,0,0,1,0);
-		default: SendPlayerChatMessage(playerid,COLOR_WHITE,"COLOR_GREEN: /cubrirse (1-2)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /cubrirse (1-2)", "info");
 	}
 	return 1;
 }
@@ -2162,7 +2131,7 @@ cmd:vomitar(playerid) { ApplyAnimEx(playerid, 0,  "FOOD", "EAT_Vomit_P", 3.0, 0,
 cmd:comiendo(playerid, params[])
 {
 	new gesto;
-	if (sscanf(params, "d", gesto)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /comiendo (1-9)");
+	if (sscanf(params, "d", gesto)) return ShowNotification(playerid, "Informacion", "Utiliza: /comiendo (1-9)", "info");
 	switch (gesto)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"FOOD","EAT_Burger",4.0,0,0,0,0,0);
@@ -2174,7 +2143,7 @@ cmd:comiendo(playerid, params[])
 		case 7: ApplyAnimEx(playerid, 0,"FOOD","SHP_Thank",4.0,0,0,0,0,0);
 		case 8: ApplyAnimEx(playerid, 0,"FOOD","SHP_Tray_Lift_Loop",4.0,1,0,0,0,0);
 		case 9: ApplyAnimEx(playerid, 0,"FOOD","SHP_Tray_Pose",4.0,1,0,0,0,0);
-		default: SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /comiendo (1-9)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /comiendo (1-9)", "info");
 	}
 	return 1;
 }
@@ -2184,7 +2153,7 @@ cmd:taichi(playerid) { ApplyAnimEx(playerid, 0,"PARK","Tai_Chi_Loop", 4.0, 1, 0,
 cmd:dormir(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /dormir (1-6)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /dormir (1-6)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimation(playerid, "INT_HOUSE", "BED_In_L",4.1,0,0,0,1,1);
@@ -2193,7 +2162,7 @@ cmd:dormir(playerid, params[])
 		case 4: ApplyAnimation(playerid, "INT_HOUSE", "BED_Loop_R",4.1,1,0,0,1,1);
 		case 5: ApplyAnimation(playerid, "INT_HOUSE", "BED_Out_L",4.1,0,1,1,0,0);
 		case 6: ApplyAnimation(playerid, "INT_HOUSE", "BED_Out_R",4.1,0,1,1,0,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /dormir (1-6)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /dormir (1-6)", "info");
 	}
 	return 1;
 }
@@ -2201,13 +2170,13 @@ cmd:dormir(playerid, params[])
 cmd:casino(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /casino (1-3)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /casino (1-3)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"CASINO","dealone",4.0,1,0,0,1,0);
 		case 2: ApplyAnimEx(playerid, 0,"CASINO","Roulette_bet",4.0,0,0,0,0,0);
 		case 3: ApplyAnimEx(playerid, 0,"CASINO","Slot_bet_02",4.0,0,0,0,0,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /casino (1-3)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /casino (1-3)", "info");
 	}
 	return 1;
 }
@@ -2215,12 +2184,12 @@ cmd:casino(playerid, params[])
 cmd:rearma(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /rearma (1-2)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /rearma (1-2)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"COLT45","colt45_reload",4.0,0,0,0,0,0);
 		case 2: ApplyAnimEx(playerid, 0,"COLT45","sawnoff_reload",4.0,0,0,0,0,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /rearma (1-2)");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /rearma (1-2)", "info");
 	}
 	return 1;
 }
@@ -2228,12 +2197,12 @@ cmd:rearma(playerid, params[])
 cmd:dubstep(playerid, params[])
 {
 	new anim;
-	if (sscanf(params, "d", anim)) return SendPlayerChatMessage(playerid, COLOR_GREEN, "Utiliza: /dubstep (1-2)");
+	if (sscanf(params, "d", anim)) return ShowNotification(playerid, "Informacion", "Utiliza: /dubstep (1-2)", "info");
 	switch (anim)
 	{
 		case 1: ApplyAnimEx(playerid, 0,"ped","DAM_LegL_frmFT",4.0,1,0,0,1,0);
 		case 2: ApplyAnimEx(playerid, 0,"ped","DAM_LegR_frmRT",4.0,1,0,0,1,0);
-		default: SendPlayerChatMessage(playerid,COLOR_GREEN,"Utiliza: /dubstep [1-2]");
+		default: ShowNotification(playerid, "Informacion", "Utiliza: /dubstep (1-2)", "info");
 	}
 	return 1;
 }

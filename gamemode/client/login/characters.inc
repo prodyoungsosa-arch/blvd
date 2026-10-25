@@ -667,7 +667,7 @@ Dialog:CrearPersonaje(playerid, response, listitem, inputtext[])
 stock InitCreateCharacter(playerid)
 {
 	LimpiarTD(playerid);
-	Notification_Show(playerid, "~w~Personaliza tu ~y~personaje ~w~utilizando el panel de la derecha.", 6000);
+	ShowNotification(playerid, "Registro", "Personaliza tu personaje utilizando el panel de la derecha.", "info", 5000, "bc");
 	PlayerTextDrawSetString(playerid, p_tdCrearPJ[playerid][29], "SD");
 	PlayerTextDrawSetString(playerid, p_tdCrearPJ[playerid][33], "SD");
 	PlayerTextDrawSetString(playerid, p_tdCrearPJ[playerid][34], "SD");
@@ -763,10 +763,10 @@ public EmpezarPersonaje(playerid)
 	mysql_tquery(db_samp, query, "CreatePlayerCharacter", "i", playerid);
 	LimpiarTD(playerid);
 
-	SendClientMessage(playerid, -1, "Bienvenido a {DAA838}WestCounty{ffffff}.");
-	Notification_Show(playerid, "~w~Hola! Te registraste con exito en ~y~"SERVER_NAME"~w~.", 5000);
-	Notification_Show(playerid, "~w~Puedes utilizar ~y~/gps ~w~para ubicar lugares de la ciudad, si tienes dudas usa ~y~/ayuda~w~ o ~y~/duda~w~.", 5000);
-	Notification_Show(playerid, "~w~Para conseguir un trabajo averigua uno con ~y~/empleos~w~.", 5000);
+	ShowNotification(playerid, "¡Bienvenido!", "Gracias por registrarte en Boulevard.es.", "success", 5000, "tc");
+	ShowNotification(playerid, "Boulevard.es", "¡Hola! Te registraste con éxito en Boulevard.es.", "info", 5000);
+	ShowNotification(playerid, "Boulevard.es", "Puedes utilizar /gps para ubicar lugares de la ciudad, si tienes dudas usa /ayuda o /duda.", "info", 5000);
+	ShowNotification(playerid, "Boulevard.es", "Para conseguir un trabajo averigua uno con /empleos.", "info", 5000);
 	return 1;
 }
 

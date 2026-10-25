@@ -209,7 +209,7 @@ Dialog:Registrarse3(playerid, response, listitem, inputtext[])
 	strcat(dialog, "1. Cual es el apellido de soltera de mi madre?\n");
 	strcat(dialog, "2. Cual es el nombre de mi mascota?\n");
 	strcat(dialog, "3. Como se llama mi primer amor?\n");
-	strcat(dialog, "4. Cual es la fecha del cumpleaños de mi hermano(a)?\n");
+	strcat(dialog, "4. Cual es la fecha del cumpleaï¿½os de mi hermano(a)?\n");
 	strcat(dialog, "5. En que colegio estudie en primaria?\n");
 	strcat(dialog, "6. Cual es el nombre de mi mejor amigo?");
 	Dialog_Show(playerid, Registrarse4, DIALOG_STYLE_LIST, "{FFFFFF}Ganton Stories A2F", dialog, "Continuar", "Volver");
@@ -224,7 +224,7 @@ Dialog:Registrarse4(playerid, response, listitem, inputtext[])
 		case 0: alm(InfoCuenta[playerid][jPreguntaSeguridad], "Cual es el apellido de soltera de mi madre?");
 		case 1: alm(InfoCuenta[playerid][jPreguntaSeguridad], "Cual es el nombre de mi mascota?");
 		case 2: alm(InfoCuenta[playerid][jPreguntaSeguridad], "Como se llama mi primer amor?");
-		case 3: alm(InfoCuenta[playerid][jPreguntaSeguridad], "Cual es la fecha del cumpleaños de mi hermano(a)?");
+		case 3: alm(InfoCuenta[playerid][jPreguntaSeguridad], "Cual es la fecha del cumpleaï¿½os de mi hermano(a)?");
 		case 4: alm(InfoCuenta[playerid][jPreguntaSeguridad], "En que colegio estudie en primaria?");
 		case 5: alm(InfoCuenta[playerid][jPreguntaSeguridad], "Cual es el nombre de mi mejor amigo?");
 	}
@@ -247,7 +247,7 @@ Dialog:Registrarse5(playerid, response, listitem, inputtext[])
 		strcat(dialog, "1. Cual es el apellido de soltera de mi madre?\n");
 		strcat(dialog, "2. Cual es el nombre de mi mascota?\n");
 		strcat(dialog, "3. Como se llama mi primer amor?\n");
-		strcat(dialog, "4. Cual es la fecha del cumpleaños de mi hermano(a)?\n");
+		strcat(dialog, "4. Cual es la fecha del cumpleaï¿½os de mi hermano(a)?\n");
 		strcat(dialog, "5. En que colegio estudie en primaria?\n");
 		strcat(dialog, "6. Cual es el nombre de mi mejor amigo?");
 		Dialog_Show(playerid, Registrarse4, DIALOG_STYLE_LIST, "{FFFFFF}Pregunta de seguridad", dialog, "Continuar", "Volver");
