@@ -1,0 +1,30 @@
+{
+    "files": {
+        "index.html": {
+            "encrypted": true,
+            "modified": 13437425355,
+            "size": 511
+        },
+        "notis.ogg": {
+            "encrypted": false,
+            "modified": 13437425318,
+            "size": 7267
+        },
+        "script.js": {
+            "encrypted": true,
+            "modified": 13437425355,
+            "size": 10633
+        },
+        "style.css": {
+            "encrypted": true,
+            "modified": 13437425355,
+            "size": 4214
+        }
+    },
+    "pak": {
+        "hash": "bdf4a6a41b640e46badf4f6ad44d8d55ebf1a20229b159b974f78f4eb5f1caff",
+        "path": "sh_notify.pak",
+        "size": 23179
+    },
+    "version": 2
+}

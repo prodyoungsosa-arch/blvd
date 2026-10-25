@@ -1,15 +1,30 @@
 {
     "files": {
+        "css/inventory.css": {
+            "encrypted": true,
+            "modified": 13437444584,
+            "size": 18055
+        },
         "index.html": {
             "encrypted": true,
-            "modified": 13436828893,
-            "size": 13770
+            "modified": 13437444589,
+            "size": 5466
+        },
+        "js/inventory.js": {
+            "encrypted": true,
+            "modified": 13437438600,
+            "size": 25785
+        },
+        "js/items.js": {
+            "encrypted": true,
+            "modified": 13437444593,
+            "size": 20555
         }
     },
     "pak": {
-        "hash": "b55185019b554e6670db77f26aeed1ceb492886d85acdb3972efa60692118ae7",
+        "hash": "156305455b62f6a1115215c5d132643d3989ffcbbf28ab54e95d24d3cf1fc18a",
         "path": "inventory.pak",
-        "size": 13932
+        "size": 70472
     },
     "version": 2
 }

@@ -1,324 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Inventario SA-MP</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; user-select: none; }
-    body { background: transparent; height: 100vh; width: 100vw; overflow: hidden; position: relative; }
-
-    /* Contenedor */
-    .inventory-container {
-      position: absolute; bottom: 30px; right: 30px; width: 520px;
-      background: #141516; border-radius: 8px; border: 1px solid rgba(165, 43, 42, 0.3);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7); display: flex; flex-direction: column; padding: 12px;
-      display: none;
-    }
-
-    /* Tabs */
-    .header-tabs { display: flex; gap: 15px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .tab { color: #8b8f96; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
-    .tab.active { color: #a52b2a; }
-
-    /* Grid */
-    .inventory-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; flex-grow: 1; }
-    .slot {
-      background: #181b20; border-radius: 4px; aspect-ratio: 1/1;
-      display: flex; align-items: center; justify-content: center; position: relative;
-      border: 1px solid transparent; transition: border-color 0.1s, background-color 0.1s;
-      cursor: grab;
-    }
-    .slot:active { cursor: grabbing; }
-    
-    .slot.drag-over { border-color: #a52b2a; background: #2a1a1a; box-shadow: inset 0 0 10px rgba(165, 43, 42, 0.5); }
-    .slot.empty { background: #101113; border: 1px dashed rgba(255,255,255,0.05); cursor: default; }
-    
-    /* IMPORTANTE: Evita que el ícono se "clone" al arrastrar */
-    .slot-svg { 
-        width: 60%; height: 60%; fill: #cdd0d5; 
-        pointer-events: none; /* <- LA CLAVE ESTÁ AQUÍ */
-    }
-    .slot-qty { 
-        position: absolute; bottom: 2px; right: 2px; 
-        background: rgba(0,0,0,0.8); color: #fff; 
-        font-size: 0.55rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; 
-        pointer-events: none; /* <- LA CLAVE ESTÁ AQUÍ */
-    }
-
-    /* Bottom bar */
-    .bottom-bar { margin-top: 12px; display: flex; align-items: center; gap: 8px; }
-    .weight-bar-bg { flex-grow: 1; height: 6px; background: #181b20; border-radius: 3px; overflow: hidden; }
-    .weight-bar-fill { height: 100%; background: #a52b2a; width: 0%; transition: width 0.3s ease; }
-    .weight-text { color: #cdd0d5; font-size: 0.65rem; font-weight: 600; min-width: 35px; text-align: right; }
-
-    /* Menú contextual */
-    .context-menu {
-      position: absolute; background: #181b20; border: 1px solid rgba(165, 43, 42, 0.4);
-      border-radius: 6px; padding: 4px; display: none; flex-direction: column; gap: 2px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.8); z-index: 100; min-width: 100px;
-    }
-    .context-menu button {
-      background: transparent; border: none; color: #cdd0d5; padding: 6px 10px;
-      text-align: left; font-size: 0.7rem; font-weight: 600; cursor: pointer; border-radius: 4px;
-      transition: 0.1s;
-    }
-    .context-menu button:hover { background: #a52b2a; color: #fff; }
-    .context-menu button.delete { color: #ff4d4d; }
-    .context-menu button.delete:hover { background: #a52b2a; color: #fff; }
-
-    /* Ghost (objeto que sigue al mouse) */
-    .dragging-ghost {
-      position: fixed; pointer-events: none; z-index: 999;
-      width: 50px; height: 50px; opacity: 0.8; transform: translate(-50%, -50%);
-      background: #181b20; border-radius: 6px; border: 1px solid #a52b2a;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .dragging-ghost svg { width: 70%; height: 70%; fill: #fff; filter: drop-shadow(0 0 10px #a52b2a); }
-  </style>
+<meta charset="utf-8">
+<title>Inventario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/inventory.css">
 </head>
 <body>
 
-  <div class="inventory-container" id="inventoryUI">
-    <div class="header-tabs">
-      <div class="tab active">Inventario</div>
-      <div class="tab">Trabajos</div>
+<div id="app" class="hidden">
+    <div class="vignette"></div>
+
+    <div class="wrap">
+
+        <!-- ================= BARRA SUPERIOR ================= -->
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-dot"></span>
+                <h1>INVENTARIO</h1>
+                <small id="ownerName">Jugador</small>
+            </div>
+
+            <div class="topbar-right">
+                <div class="money" title="Dinero en mano">
+                    <span class="money-sign">$</span>
+                    <b id="money">0</b>
+                </div>
+                <button id="btnClose" class="btn-close" type="button">
+                    <span>CERRAR</span><kbd>ESC</kbd>
+                </button>
+            </div>
+        </header>
+
+        <!-- ================= CUERPO ================= -->
+        <main class="layout">
+
+            <!-- EQUIPAMIENTO -->
+            <section class="panel equip-panel">
+                <div class="panel-head">
+                    <h2><i></i>MANOS Y ESPALDA</h2>
+                </div>
+                <div class="equip-stage" id="equip">
+                    <svg class="silhouette" viewBox="0 0 120 260" aria-hidden="true">
+                        <circle cx="60" cy="28" r="20"/>
+                        <path d="M30 62c0-8 8-14 18-14h24c10 0 18 6 18 14v70c0 5-4 8-8 8h-4v100c0 5-4 9-9 9H51c-5 0-9-4-9-9V140h-4c-4 0-8-3-8-8z"/>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- MOCHILA -->
+            <section class="panel bag-panel">
+                <div class="panel-head">
+                    <h2><i></i>BOLSILLOS</h2>
+                    <label class="search">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                        <input id="search" type="text" placeholder="Buscar objeto..." maxlength="24" autocomplete="off" spellcheck="false">
+                    </label>
+                </div>
+
+                <div class="weight">
+                    <div class="weight-row">
+                        <span class="weight-label">BOLSILLOS</span>
+                        <span class="weight-val"><b id="wCur">0</b> / <span id="wMax">9</span></span>
+                    </div>
+                    <div class="weight-bar"><div id="wFill"></div></div>
+                </div>
+
+                <div class="grid" id="grid"></div>
+
+                <div class="hint">
+                    <span><kbd>Clic</kbd> seleccionar</span>
+                    <span><kbd>Doble clic</kbd> coger / guardar</span>
+                    <span><kbd>Clic der.</kbd> opciones</span>
+                    <span><kbd>1-9</kbd> coger bolsillo</span>
+                    <span><kbd>Shift</kbd> + arrastrar = mover cantidad</span>
+                </div>
+            </section>
+
+            <!-- DETALLE -->
+            <aside class="panel detail-panel">
+                <div class="panel-head">
+                    <h2><i></i>DETALLE</h2>
+                </div>
+
+                <div id="detailEmpty" class="detail-empty">
+                    <div class="empty-ico">&#128230;</div>
+                    <p>Selecciona un objeto<br>para ver su informacion.</p>
+                </div>
+
+                <div id="detailBody" class="detail-body" hidden>
+                    <div class="d-hero" id="dHero"><span id="dIcon"></span></div>
+                    <h3 id="dName">-</h3>
+                    <div class="chips">
+                        <span class="chip" id="dRarity">Comun</span>
+                        <span class="chip chip-mut" id="dCat">Varios</span>
+                    </div>
+                    <p class="d-desc" id="dDesc"></p>
+
+                    <ul class="stats">
+                        <li><span>Cantidad</span><b id="dAmount">1</b></li>
+                        <li><span>Maximo por slot</span><b id="dMax">1</b></li>
+                        <li><span>Ubicacion</span><b id="dLoc">-</b></li>
+                    </ul>
+
+                    <div class="qty-box" id="qtyBox">
+                        <span class="qty-label">CANTIDAD</span>
+                        <div class="qty-ctl">
+                            <button type="button" id="qMinus">&minus;</button>
+                            <input id="qty" type="number" min="1" value="1">
+                            <button type="button" id="qPlus">+</button>
+                            <button type="button" id="qMax" class="qmax">MAX</button>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" id="btnUse"  class="btn btn-main">USAR</button>
+                        <button type="button" id="btnGive" class="btn">DAR</button>
+                        <button type="button" id="btnDrop" class="btn btn-danger">TIRAR</button>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
     </div>
-    <div class="inventory-grid" id="inventoryGrid"></div>
-    <div class="bottom-bar">
-      <div style="color:#cdd0d5; font-size:0.8rem;">??</div>
-      <div class="weight-bar-bg"><div class="weight-bar-fill" id="weightFill"></div></div>
-      <div class="weight-text" id="weightText">0/16</div>
-    </div>
-  </div>
 
-  <div class="context-menu" id="contextMenu">
-    <button onclick="actionUse()" id="btnUse">Usar</button>
-    <button onclick="actionEquip()" id="btnEquip">Equipar</button>
-    <button onclick="actionDrop()" class="delete" id="btnDrop">Tirar al suelo</button>
-  </div>
+    <div id="tooltip" class="tooltip"></div>
+    <div id="ctx" class="ctx"></div>
+    <div id="toasts" class="toasts"></div>
+    <div id="ghost" class="ghost"></div>
+</div>
 
-  <script>
-    // ==========================================
-    // ICONOS SVG
-    // ==========================================
-    const svgIcons = {
-      gun: `<path d="M21 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2v2H5v2h4v-2h2v2h2v-2h2v2h2v-2h2a2 2 0 0 0 2-2zM6 7h12v2H6V7z"/>`,
-      knife: `<path d="M6.92 5H5l9 9 1-.94L6.92 5zM3.01 2.01l1.98 1.98L3.01 6l2.83 2.83L8.01 6.66l4.59 4.59-1.42 1.42 1.41 1.41 1.42-1.42 4.59 4.59-1.42 1.42 1.41 1.41 1.42-1.42 4.59 4.59L3.01 2.01z"/>`,
-      beer: `<path d="M18 4h-4v2h1v2h-2v11h6V8h-2V6h1V4zm-3 6h2v2h-2v-2zm2 4h-2v2h2v-2zM4 4h4v2H7v2h2v11H3V8h2V6H4V4zm1 6v2h2v-2H5zm2 4H5v2h2v-2z"/>`,
-      medical: `<path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-4 10h-2v2h-2v-2H9v-2h2V9h2v2h2v2z"/>`,
-      box: `<path d="M20 2H4c-1.1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-.9-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/>`
-    };
-
-    const itemDatabase = {
-      1:  { name: 'Nudillera', svg: svgIcons.knife, stackable: false },
-      4:  { name: 'Cuchillo', svg: svgIcons.knife, stackable: false },
-      19: { name: 'Colt M1911', svg: svgIcons.gun, stackable: false },
-      53: { name: 'Botiquín', svg: svgIcons.medical, stackable: true },
-      65: { name: 'Cerveza', svg: svgIcons.beer, stackable: true },
-      86: { name: 'Mochila', svg: svgIcons.box, stackable: false },
-    };
-
-    let inventoryState = new Array(12).fill(null);
-    let currentWeight = 0;
-    
-    // Variables para el Drag & Drop
-    let isDragging = false;
-    let draggedIndex = -1;
-    let dragGhost = null;
-    let selectedIndex = -1;
-    let mouseDownTime = 0; // Para diferenciar clic de arrastre
-
-    const grid = document.getElementById('inventoryGrid');
-    const weightFill = document.getElementById('weightFill');
-    const weightText = document.getElementById('weightText');
-    const contextMenu = document.getElementById('contextMenu');
-
-    function render() {
-      grid.innerHTML = '';
-      for (let i = 0; i < 12; i++) {
-        const slot = document.createElement('div');
-        slot.className = 'slot';
-        slot.dataset.index = i;
-        const item = inventoryState[i];
-
-        if (item && item.id) {
-          const dbItem = itemDatabase[item.id] || { name: 'Objeto', svg: svgIcons.box };
-          slot.innerHTML = `<svg class="slot-svg" viewBox="0 0 24 24">${dbItem.svg}</svg><span class="slot-qty">${item.qty}</span>`;
-        } else {
-          slot.classList.add('empty');
-          slot.innerHTML = `<span style="opacity:0.2; font-size:1.5rem; color:#fff; pointer-events:none;">+</span>`;
-        }
-
-        // EVENTOS DEL MOUSE (Sin usar draggable de HTML)
-        slot.addEventListener('mousedown', (e) => onMouseDown(e, i));
-        slot.addEventListener('mouseenter', () => onMouseEnter(i));
-        slot.addEventListener('mouseleave', () => onMouseLeave(i));
-
-        grid.appendChild(slot);
-      }
-      weightFill.style.width = `${Math.min((currentWeight / 16) * 100, 100)}%`;
-      weightText.textContent = `${currentWeight}/16`;
-    }
-
-    // ==========================================
-    // LOGICA DE MOUSE (CLICK Y DRAG)
-    // ==========================================
-    function onMouseDown(e, index) {
-      if (e.button !== 0) return; // Solo clic izquierdo
-      const item = inventoryState[index];
-      if (!item) return; // Slot vacío
-      
-      contextMenu.style.display = 'none';
-      
-      mouseDownTime = Date.now();
-      draggedIndex = index;
-      
-      // Iniciamos un temporizador para ver si es click o arrastre
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUpGlobal);
-    }
-
-    function onMouseMove(e) {
-      // Si nos movemos más de 5px, empezamos a arrastrar
-      if (draggedIndex !== -1 && !isDragging) {
-         isDragging = true;
-         const item = inventoryState[draggedIndex];
-         const dbItem = itemDatabase[item.id] || { name: 'Objeto', svg: svgIcons.box };
-         
-         dragGhost = document.createElement('div');
-         dragGhost.className = 'dragging-ghost';
-         dragGhost.innerHTML = `<svg viewBox="0 0 24 24">${dbItem.svg}</svg>`;
-         document.body.appendChild(dragGhost);
-      }
-
-      if (isDragging && dragGhost) {
-        dragGhost.style.left = `${e.clientX}px`;
-        dragGhost.style.top = `${e.clientY}px`;
-      }
-    }
-
-    function onMouseUpGlobal(e) {
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUpGlobal);
-
-      // Quitar resaltado
-      document.querySelectorAll('.slot').forEach(s => s.classList.remove('drag-over'));
-
-      if (isDragging) {
-        // Fue un arrastre
-        if (dragGhost) { dragGhost.remove(); dragGhost = null; }
-        
-        const targetElement = document.elementFromPoint(e.clientX, e.clientY);
-        const targetSlot = targetElement ? targetElement.closest('.slot') : null;
-
-        if (targetSlot) {
-          const toIndex = parseInt(targetSlot.dataset.index);
-          if (draggedIndex !== toIndex) {
-            handleDrop(draggedIndex, toIndex);
-          }
-        } else {
-          // Soltó fuera de la cuadrícula -> Tirar al suelo
-          const invContainer = document.getElementById('inventoryUI');
-          if (!invContainer.contains(targetElement)) {
-            if (window.cef && window.cef.emit) cef.emit("inventory:drop", draggedIndex);
-          }
-        }
-      } else {
-        // Fue un clic simple -> Abrir menú
-        if (Date.now() - mouseDownTime < 300) {
-           openContextMenu(e.clientX, e.clientY, draggedIndex);
-        }
-      }
-      
-      isDragging = false;
-      draggedIndex = -1;
-    }
-
-    function onMouseEnter(index) {
-      if (isDragging) {
-        const slot = document.querySelector(`.slot[data-index="${index}"]`);
-        if (slot) slot.classList.add('drag-over');
-      }
-    }
-
-    function onMouseLeave(index) {
-      const slot = document.querySelector(`.slot[data-index="${index}"]`);
-      if (slot) slot.classList.remove('drag-over');
-    }
-
-    // ==========================================
-    // MENÚ CONTEXTUAL
-    // ==========================================
-    function openContextMenu(x, y, index) {
-      selectedIndex = index;
-      contextMenu.style.display = 'flex';
-      contextMenu.style.left = `${Math.min(x, window.innerWidth - 120)}px`;
-      contextMenu.style.top = `${Math.min(y, window.innerHeight - 100)}px`;
-      const item = inventoryState[index];
-      const dbItem = itemDatabase[item.id] || { name: 'Objeto' };
-      document.getElementById('btnEquip').style.display = dbItem.stackable ? 'none' : 'block';
-    }
-
-    document.addEventListener('mousedown', (e) => {
-      if (!contextMenu.contains(e.target) && !e.target.closest('.slot')) {
-        contextMenu.style.display = 'none';
-      }
-    });
-
-    function actionUse() {
-      if (selectedIndex !== -1 && window.cef && window.cef.emit) { cef.emit("inventory:use", selectedIndex); contextMenu.style.display = 'none'; }
-    }
-    function actionEquip() {
-      if (selectedIndex !== -1 && window.cef && window.cef.emit) { cef.emit("inventory:equip", selectedIndex); contextMenu.style.display = 'none'; }
-    }
-    function actionDrop() {
-      if (selectedIndex !== -1 && window.cef && window.cef.emit) { cef.emit("inventory:drop", selectedIndex); contextMenu.style.display = 'none'; }
-    }
-
-    // ==========================================
-    // LOGICA DE MOVIMIENTO
-    // ==========================================
-    function handleDrop(from, to) {
-      const itemFrom = inventoryState[from];
-      const itemTo = inventoryState[to];
-      if (!itemFrom) return;
-
-      // Efecto visual inmediato
-      if (!itemTo) {
-        inventoryState[to] = itemFrom;
-        inventoryState[from] = null;
-      } else if (itemTo.id === itemFrom.id && itemDatabase[itemFrom.id]?.stackable) {
-        itemTo.qty += itemFrom.qty;
-        inventoryState[from] = null;
-      } else {
-        inventoryState[to] = itemFrom;
-        inventoryState[from] = itemTo;
-      }
-      render();
-
-      // Enviar a Pawn
-      if (window.cef && window.cef.emit) {
-        cef.emit("inventory:move", JSON.stringify({ from, to }));
-      }
-    }
-
-    document.addEventListener('contextmenu', event => event.preventDefault());
-
-    if (window.cef && window.cef.on) {
-      cef.on("inventory:update", (jsonString) => {
-        try {
-          const data = JSON.parse(jsonString);
-          inventoryState = data.inventory;
-          currentWeight = data.weight;
-          render();
-          document.getElementById('inventoryUI').style.display = 'flex';
-        } catch(e) { console.error("Error parseando", e); }
-      });
-      cef.on("inventory:close", () => {
-        document.getElementById('inventoryUI').style.display = 'none';
-      });
-    }
-    render();
-  </script>
+<script src="js/items.js"></script>
+<script src="js/inventory.js"></script>
 </body>
 </html>

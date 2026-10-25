@@ -1,0 +1,9 @@
+Iconos propios (opcional)
+-------------------------
+Pone aca tus PNG/WEBP/SVG (ej: agua.png) y en js/items.js cambia
+    icon: "💧"
+por
+    icon: "agua.png"
+
+Por defecto los objetos usan emojis, asi que no necesitas imagenes para que funcione.
+Tamano recomendado: 128x128 o 256x256 con fondo transparente.

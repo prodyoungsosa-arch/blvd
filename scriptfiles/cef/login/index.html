@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Acceso</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--ac:#FE9A2E;--bg:#14171c;--ln:#2a2f38;--tx:#eceff4;--mu:#8b93a1;--er:#ff5d5d;--ok:#4cd98a}
+*{box-sizing:border-box;margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif}
+html,body{height:100%;overflow:hidden;color:var(--tx);user-select:none}
+body{display:grid;place-items:center;background:radial-gradient(ellipse at center,rgba(8,10,14,.55),rgba(8,10,14,.92))}
+.card{width:min(420px,92vw);background:rgba(20,23,28,.94);border:1px solid var(--ln);border-radius:14px;padding:28px 28px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+h1{text-align:center;font-size:22px;letter-spacing:4px;font-weight:700}h1 span{color:var(--ac)}
+.tabs{display:flex;margin:20px 0 18px;border-bottom:1px solid var(--ln)}
+.tabs button{flex:1;background:none;border:0;color:var(--mu);padding:10px;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--tx);border-color:var(--ac)}
+label{display:block;font-size:12px;color:var(--mu);margin-bottom:14px}
+input,select{display:block;width:100%;margin-top:6px;padding:11px 12px;background:#0e1115;border:1px solid var(--ln);border-radius:8px;color:var(--tx);font-size:14px;outline:0;user-select:text}
+input:focus,select:focus{border-color:var(--ac)}
+.go,.ghost{padding:12px;border-radius:8px;border:0;font-size:14px;font-weight:600;cursor:pointer}
+.go{flex:1;width:100%;background:var(--ac);color:#1a1205}.go:hover{filter:brightness(1.08)}
+.go:disabled{opacity:.5;cursor:wait}
+.ghost{background:#222831;color:var(--tx);padding:12px 18px}
+.row{display:flex;gap:10px;margin-top:6px}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:16px}
+.dots i{width:28px;height:4px;border-radius:2px;background:var(--ln)}.dots i.on{background:var(--ac)}
+.meter{height:4px;border-radius:2px;background:var(--ln);margin:-8px 0 14px;overflow:hidden}
+.meter b{display:block;height:100%;width:0;background:var(--er);transition:.2s}
+#msg{min-height:18px;margin-top:14px;text-align:center;font-size:13px;color:var(--er)}#msg.ok{color:var(--ok)}
+[hidden]{display:none!important}
+</style></head><body>
+<main class="card">
+  <h1>GANTON <span>STORIES</span></h1>
+  <nav class="tabs"><button id="tL" class="on" type="button">Ingresar</button><button id="tR" type="button">Registrarse</button></nav>
+
+  <form id="fL" autocomplete="off">
+    <label>Correo electrónico<input id="lEmail" maxlength="48" autofocus></label>
+    <label>Clave<input id="lPass" type="password" maxlength="18"></label>
+    <button class="go" id="lGo">Ingresar</button>
+  </form>
+
+  <form id="fR" autocomplete="off" hidden>
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+    <section data-s="0">
+      <label>Nombre de usuario<input id="rUser" maxlength="20"></label>
+      <label>Correo electrónico<input id="rEmail" maxlength="48"></label>
+    </section>
+    <section data-s="1" hidden>
+      <label>Clave<input id="rPass" type="password" maxlength="18"></label>
+      <div class="meter"><b id="mt"></b></div>
+      <label>Repetir clave<input id="rPass2" type="password" maxlength="18"></label>
+    </section>
+    <section data-s="2" hidden>
+      <label>Pregunta de seguridad
+        <select id="rQ">
+          <option value="0">¿Cuál es el apellido de soltera de mi madre?</option>
+          <option value="1">¿Cuál es el nombre de mi mascota?</option>
+          <option value="2">¿Cómo se llama mi primer amor?</option>
+          <option value="3">¿Cuál es la fecha del cumpleaños de mi hermano(a)?</option>
+          <option value="4">¿En qué colegio estudié en primaria?</option>
+          <option value="5">¿Cuál es el nombre de mi mejor amigo?</option>
+        </select></label>
+      <label>Respuesta de seguridad<input id="rAns" maxlength="32"></label>
+    </section>
+    <div class="row"><button type="button" class="ghost" id="back">Atrás</button><button class="go" id="next">Continuar</button></div>
+  </form>
+
+  <p id="msg" role="alert"></p>
+</main>
+<script>
+// Fuera del juego (navegador normal) cef no existe: stub para poder probar la UI.
+if (!window.cef) window.cef = { emit: (...a) => console.log("emit", a), on: () => {} };
+
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const val = s => $(s).value.trim();
+let step = 0, busy = false;
+
+const msg = (t, ok) => { const m = $("#msg"); m.textContent = t || ""; m.className = ok ? "ok" : ""; };
+const lock = b => { busy = b; $$("button.go").forEach(x => x.disabled = b); };
+
+function setMode(m) {
+  $("#fL").hidden = m !== "login"; $("#fR").hidden = m !== "register";
+  $("#tL").classList.toggle("on", m === "login"); $("#tR").classList.toggle("on", m === "register");
+  msg(""); setStep(0);
+  (m === "login" ? $("#lEmail") : $("#rUser")).focus();
+}
+function setStep(n) {
+  step = n;
+  $$("#fR section").forEach(s => s.hidden = +s.dataset.s !== n);
+  $$(".dots i").forEach((d, i) => d.classList.toggle("on", i <= n));
+  $("#back").style.visibility = n ? "visible" : "hidden";
+  $("#next").textContent = n === 2 ? "Crear cuenta" : "Continuar";
+}
+$("#tL").onclick = () => setMode("login");
+$("#tR").onclick = () => setMode("register");
+$("#back").onclick = () => { msg(""); setStep(step - 1); };
+
+// Mismas reglas que el servidor (el servidor las vuelve a validar siempre).
+const V = {
+  user: v => v.length < 5 ? "El usuario debe tener al menos 5 caracteres." : v.length > 20 ? "El usuario no puede superar 20 caracteres." : !/^[A-Za-z0-9]+$/.test(v) ? "El usuario solo puede tener letras y números." : "",
+  email: v => v.length < 10 ? "El correo debe tener al menos 10 caracteres." : !v.includes("@") ? "El correo debe contener “@”." : "",
+  pass: v => v.length < 5 ? "La clave debe tener al menos 5 caracteres." : v.length > 18 ? "La clave no puede superar 18 caracteres." : "",
+  ans: v => v.length < 5 ? "La respuesta debe tener al menos 5 caracteres." : ""
+};
+const check = [
+  () => V.user(val("#rUser")) || V.email(val("#rEmail")),
+  () => V.pass($("#rPass").value) || ($("#rPass").value !== $("#rPass2").value ? "Las claves no coinciden." : ""),
+  () => V.ans(val("#rAns"))
+];
+
+$("#rPass").oninput = e => {
+  const v = e.target.value;
+  const s = (v.length >= 5) + (v.length >= 9) + /[A-Z]/.test(v) + /\d/.test(v) + /[^A-Za-z0-9]/.test(v);
+  $("#mt").style.width = s * 20 + "%";
+  $("#mt").style.background = s < 3 ? "var(--er)" : s < 5 ? "var(--ac)" : "var(--ok)";
+};
+
+$("#fL").onsubmit = e => {
+  e.preventDefault(); if (busy) return;
+  const em = val("#lEmail"), pw = $("#lPass").value;
+  if (!em || !pw) return msg("Completa todos los campos.");
+  msg("Verificando…", true); lock(true);
+  cef.emit("login:submit", em, pw);
+};
+
+$("#fR").onsubmit = e => {
+  e.preventDefault(); if (busy) return;
+  const err = check[step]();
+  if (err) return msg(err);
+  msg("");
+  if (step < 2) return setStep(step + 1);
+  msg("Creando cuenta…", true); lock(true);
+  cef.emit("register:submit", val("#rUser"), val("#rEmail"), $("#rPass").value, +$("#rQ").value, val("#rAns"));
+};
+
+// Eventos desde Pawn
+cef.on("ui:error", t => { lock(false); msg(t); });
+cef.on("ui:show", m => { lock(false); setMode(m); });
+</script></body></html>

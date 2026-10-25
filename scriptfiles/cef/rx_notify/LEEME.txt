@@ -1,0 +1,48 @@
+RX NOTIFY para SA-MP + PawnCEF
+Reemplaza sh_notify. Mismo esquema: un browser CEF por jugador, cola hasta que carga, y chat si no tiene el plugin.
+
+INSTALACION
+1. Saca #include <sh_notify> del gamemode.
+2. Copia rx_notify.inc a pawno/include/ (o a la carpeta de includes que uses).
+3. Copia la carpeta rx_notify (index.html, style.css, script.js) adonde tu servidor sirve los recursos CEF.
+   Tiene que quedar accesible como http://cef/rx_notify/index.html
+   Es el mismo lugar donde estaba la carpeta sh_notify.
+4. En el gamemode, despues de cef:
+
+   #include <cef>
+   #include <rx_notify>
+
+API NUEVA (la de RX)
+   RxNotify(playerid, titulo[], texto[], tipo[], milisegundos, confetti, posicion[]);
+
+   tipo:      "success"  "error"  "warn"  "info"
+   posicion:  "tl" "tc" "tr" "lc" "rc" "bl" "bc" "br"
+              vacio usa RXN_POSITION (por defecto "lc", izquierda al centro)
+   confetti:  0 o 1
+
+   RxNotify(playerid, "Banco", "Recibiste $2500", "success", 4000, 0, "lc");
+   RxNotify(playerid, "Logro", "Llegaste a nivel 10", "success", 5000, 1, "tc");
+   RxNotifyAll("Servidor", "Reinicio en 5 minutos", "warn", 6000, 0, "tc");
+
+LO VIEJO SIGUE COMPILANDO
+   Notify(playerid, "No tenes dinero suficiente", "error");
+   Notify(playerid, "Zona roja", "warning", 5000, "Cuidado");
+   LocalNotify(playerid, "Burgershot ha abierto sus puertas!", "open");
+   NotifyAll(...) y LocalNotifyAll(...) igual que antes.
+
+   Esos avisos ahora se dibujan como tarjeta RX, no como el paralelogramo de SH.
+   LocalNotify sale arriba al centro.
+
+TIPOS VIEJOS QUE SE TRADUCEN SOLOS
+   primary / info / police          -> info
+   success / open                   -> success
+   error / closed / ambulance       -> error
+   warning / warn                   -> warn
+
+COLORES Y TEXTOS
+   Edita CONFIG al principio de script.js (fondo, acentos, titulos por defecto, sonido, posicion).
+   Titulo maximo 48 caracteres. Texto maximo 128. Es el tope de la cola de Pawn;
+   si necesitas mas, sube RXN_TITLE_SIZE y RXN_TEXT_SIZE.
+
+PROBAR EL HTML SIN EL JUEGO
+   Abri index.html#demo en un navegador.
